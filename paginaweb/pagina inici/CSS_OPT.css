@@ -1,0 +1,40 @@
+    .barradalt {
+      display: flex;           /* Pone los elementos en línea (imagen + texto) */
+      align-items: center;     /* Centra verticalmente */
+      gap: 30px;               /* Espacio entre imagen y texto */
+      background-color: #1F85DE;     /* 🔵 fondo azul */
+      color: white;               /* texto blanco para contraste */
+      padding: 10px 20px;         /* espacio interno */
+    }
+
+    img {
+      width: 100px;             
+      height: auto;
+    }
+
+        body {
+      margin: 0;
+      padding: 0;
+    }
+
+      h1 {
+      font-weight: 800;         /* 🔠 negrita muy marcada */
+      font-family: 'Poppins', sans-serif; /* fuente moderna */
+      margin: 0;                /* quita espacio extra alrededor */
+    }
+
+    .barrabaix {
+      display: flex; 
+      align-items: center;
+      gap: 30px; 
+      background-color: #1F85DE;
+      color: white;
+      padding: 10px 20px;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      justify-content: space-between;
+      box-sizing: border-box;
+
+    }
