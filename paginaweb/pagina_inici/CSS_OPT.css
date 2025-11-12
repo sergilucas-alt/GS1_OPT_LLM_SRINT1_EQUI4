@@ -1,0 +1,115 @@
+
+/* --- CABECERA --- */
+.barradalt {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background-color: #1F85DE;
+  color: white;
+  padding: 10px 20px;
+}
+
+.barradalt img {
+  width: 100px;
+  height: auto;
+}
+
+h1 {
+  font-weight: 800;
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+}
+
+.boton-h1 {
+  all: unset; /* elimina TODOS los estilos por defecto del botón */
+  font-size: 2.5rem; /* tamaño típico de un h1 */
+  font-weight: bold;
+  line-height: 1.2;
+  color: #000; /* color del texto (ajusta si tu fondo es oscuro) */
+  cursor: pointer; /* mantiene el puntero de clic */
+}
+
+/* --- ESTRUCTURA GENERAL --- */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* --- MAIN (zona botones) --- */
+main {
+  flex: 1; 
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-items: stretch; 
+  gap: 0;
+  padding: 20px; 
+  gap: 20px;   
+}
+
+/* --- BOTONES --- */
+main > button {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: none;
+  font-size: 4rem;
+  color: white;
+  cursor: pointer;
+  transition: filter 0.3s;
+  margin: 0;
+  padding: 0;
+
+}
+
+/* botón con imagen de fondo */
+main > button:nth-child(2) {
+  background-image: url('intranetbo.png');
+  position: relative;            /* para contener ::before */
+  overflow: hidden;
+  color: white;                  /* texto encima de la imagen */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.7);
+  /* mantener layout del botón */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main > button:nth-child(2) > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+main button:hover {
+  filter: brightness(1.2);
+}
+
+/* al pasar el ratón, quitar el gris (mostrar color) */
+main > button:nth-child(2):hover::before {
+  filter: grayscale(0%);
+  transform: scale(1.02); /* opcional: ligero zoom al hover */
+}
+
+/* --- FOOTER --- */
+.barrabaix {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background-color: #1F85DE;
+  color: white;
+  padding: 10px 20px;
+  box-sizing: border-box;
+}

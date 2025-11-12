@@ -1,0 +1,42 @@
+document.addEventListener('DOMContentLoaded', () => {
+  const buttons = document.querySelectorAll('main > button');
+
+  buttons.forEach(btn => {
+    const addHover = () => btn.classList.add('hover-scale');
+    const removeHover = () => btn.classList.remove('hover-scale');
+    const addActive = () => btn.classList.add('active-scale');
+    const removeActive = () => btn.classList.remove('active-scale');
+
+        // nueva clase para quitar el brillo del :hover
+    const addNoBright = () => btn.classList.add('no-hover-bright');
+    const removeNoBright = () => btn.classList.remove('no-hover-bright');
+
+    // mouse
+    btn.addEventListener('mouseenter', addHover);
+    btn.addEventListener('mouseleave', () => { removeHover(); removeActive(); });
+    btn.addEventListener('mousedown', addActive);
+    window.addEventListener('mouseup', removeActive);
+
+    // touch (móvil)
+    btn.addEventListener('touchstart', (e) => { addHover(); addActive(); }, { passive: true });
+    btn.addEventListener('touchend', () => { removeActive(); removeHover(); }, { passive: true });
+
+    // teclado accesible
+    btn.addEventListener('focus', addHover);
+    btn.addEventListener('blur', () => { removeHover(); removeActive(); });
+    btn.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') addActive();
+    });
+    btn.addEventListener('keyup', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') removeActive();
+    });
+
+    // click: efecto rápido y restaurar si no se suelta (seguro extra)
+    btn.addEventListener('click', () => {
+      addActive();
+      setTimeout(removeActive, 150);
+    });
+
+
+  });
+});
