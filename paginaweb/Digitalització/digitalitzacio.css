@@ -1,0 +1,580 @@
+/* ============================================ */
+/* ESTILS PER A LA PÀGINA DE DIGITALITZACIÓ */
+/* ============================================ */
+
+/* --- ESTRUCTURA BÀSICA DE LA PÀGINA --- */
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+	font-family: 'Poppins', Arial, sans-serif;
+	background-color: #fafafa;
+}
+
+/* ============================================ */
+/* CAPÇALERA (HEADER) */
+/* ============================================ */
+
+header {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.barradalt {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	background-color: #dce8f7;
+	color: #1F85DE;
+	padding: 10px 20px;
+}
+
+.barradalt img {
+	width: 100px;
+	height: auto;
+}
+
+.boton-h1 {
+	all: unset;
+	font-size: 2.2rem;
+	font-weight: 800;
+	line-height: 1.2;
+	color: #1F85DE;
+	cursor: pointer;
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+	transition: opacity 0.3s ease;
+}
+
+.boton-h1:hover {
+	opacity: 0.7;
+}
+
+/* ============================================ */
+/* PEU DE PÀGINA (FOOTER) */
+/* ============================================ */
+
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.barrabaix {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+	background-color: #dce8f7;
+	color: #1F85DE;
+	padding: 15px 20px;
+	box-sizing: border-box;
+	border-top: 2px solid #1F85DE;
+}
+
+/* ============================================ */
+/* CARRUSEL */
+/* ============================================ */
+
+.carousel {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+	margin-top: 70px; /* Espai per al header fix */
+	margin-bottom: 60px; /* Espai per al footer fix */
+}
+
+.slides {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+
+.slide {
+	display: none;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	flex-direction: column;
+}
+
+.slide.active {
+	display: flex;
+}
+
+.slide main {
+	overflow-y: auto;
+	flex: 1 1 auto;
+	padding: 5px;
+}
+
+/* Botons de navegació del carrusel */
+.btn {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(31, 133, 222, 0.8);
+	color: white;
+	border: none;
+	padding: 12px 18px;
+	cursor: pointer;
+	border-radius: 50%;
+	font-size: 20px;
+	z-index: 10;
+	transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn:hover {
+	background: rgba(31, 133, 222, 1);
+	transform: translateY(-50%) scale(1.1);
+}
+
+#prev {
+	left: 10px;
+}
+
+#next {
+	right: 10px;
+}
+
+/* ============================================ */
+/* ESTIL UNIFICAT PÀGINES 1 I 2 */
+/* ============================================ */
+
+.pagina-contingut {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 15px 20px;
+	background-color: white;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.titol-superior {
+	font-weight: 800;
+	font-size: 18px;
+	color: #1F85DE;
+	text-transform: uppercase;
+	border-bottom: 2px solid #f0f0f0;
+	padding-bottom: 10px;
+	margin-top: 0;
+}
+
+.contingut-principal {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 15px;
+	margin-top: 0px;
+}
+
+/* Quadres estil pàgina 1 i 2 */
+.quadre-blau, .quadre-verd, .quadre-roig {
+	padding: 15px;
+	border-radius: 8px;
+	background-color: white;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.quadre-blau img, .quadre-verd img {
+	width: 100%;
+	border-radius: 6px;
+	margin-top: 0px;
+	max-height: 180px;
+	object-fit: cover;
+}
+
+.quadre-verd h3, .quadre-roig h3 {
+	background-color: #1F85DE;
+	color: white;
+	padding: 0.4rem;
+	border-radius: 4px;
+	margin-top: 0;
+	text-align: left;
+	font-size: 16px;
+}
+
+.quadre-roig ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.quadre-roig li {
+	margin-bottom: 0.5rem;
+	text-align: justify;
+	font-size: 14px;
+}
+
+/* ============================================ */
+/* PÀGINA 2 DETALLS */
+/* ============================================ */
+
+.seccio-pregunta {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 15px;
+}
+
+.barra-vertical {
+	width: 6px;
+	height: 35px;
+	background-color: #1F85DE;
+}
+
+.seccio-pregunta h3 {
+	font-weight: 800;
+	font-size: 20px;
+	color: #333;
+	margin: 0;
+}
+
+.introduccio {
+	font-size: 14px;
+	color: #444;
+	max-width: 90%;
+	margin-top: 10px;
+}
+
+.seccio-beneficis {
+	display: flex;
+	gap: 15px;
+	margin-top: 15px;
+}
+
+.seccio-beneficis .columna {
+	flex: 1;
+}
+
+.seccio-beneficis h4 {
+	font-weight: 800;
+	font-size: 15px;
+	color: #222;
+	margin-top: 0;
+}
+
+.seccio-beneficis p {
+	font-size: 13px;
+	color: #555;
+	line-height: 1.4;
+}
+
+/* Idees i mòbil */
+.idees-titol-bar {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	background-color: #1F85DE;
+	color: white;
+	padding: 8px 10px;
+	border-radius: 8px 8px 0 0;
+}
+
+.icona-idea {
+	width: 25px;
+	height: auto;
+}
+
+.idees-titol-bar h4 {
+	margin: 0;
+	font-weight: 800;
+	font-size: 16px;
+}
+
+.idees-contingut {
+	display: flex;
+	background-color: #cae3f6;
+	padding: 15px;
+	gap: 10px;
+	border-radius: 0 0 8px 8px;
+}
+
+.idea-box {
+	flex: 1;
+}
+
+.idea-box + .idea-box {
+	border-left: 1px dashed #cccccc;
+	padding-left: 10px;
+}
+
+.idea-box h5 {
+	font-weight: 800;
+	font-size: 14px;
+	color: #333;
+	margin-top: 0;
+}
+
+.idea-box p {
+	font-size: 13px;
+	color: #555;
+	line-height: 1.4;
+}
+
+.columna-idees {
+	grid-column: 1 / -1;
+}
+
+.columna-mobil {
+	padding-top: 10px;
+}
+
+.imatge-mobil {
+	width: 100%;
+	max-width: 200px;
+	display: block;
+	margin: 0 auto;
+	border: 1px solid #ddd;
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.text-tutorial {
+	font-size: 12px;
+	color: #555;
+	padding: 5px;
+}
+
+/* ============================================ */
+/* CSS PÀGINA 3 */
+/* ============================================ */
+
+.contingut-pagina3-wrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 15px 20px;
+	background-color: white;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Subtítol secció */
+.subtitol-seccio {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-top: 15px;
+}
+
+.barra-vertical-gruixuda {
+	width: 8px;
+	height: 35px;
+	background-color: #1F85DE;
+}
+
+.subtitol-seccio h3 {
+	font-weight: 800;
+	font-size: 20px;
+	color: #333;
+	margin: 0;
+}
+
+/* Grid principal */
+.grid-pagina3 {
+	display: grid;
+	grid-template-columns: 2fr 1fr;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+/* Columna esquerra info */
+.caixa-info {
+	margin-bottom: 20px;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.capcalera-marro {
+	background-color: #1F85DE;
+	color: white;
+	padding: 8px 10px;
+}
+
+.capcalera-marro h4 {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 800;
+}
+
+.cos-caixa {
+	background-color: #bed1ed;
+	padding: 12px 15px;
+}
+
+.item-llista p {
+	font-size: 13px;
+	line-height: 1.4;
+	margin: 8px 0;
+}
+
+/* Columna dreta video */
+.contenidor-imatge-video {
+	position: relative;
+	width: 100%;
+	margin-bottom: 50px;
+	cursor: pointer;
+}
+
+.imatge-monitor {
+	width: 100%;
+	border-radius: 6px;
+	max-height: 200px;
+	object-fit: cover;
+}
+
+.icona-ma-overlay {
+	position: absolute;
+	width: 40px;
+	height: auto;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	pointer-events: none;
+}
+
+/* Text explicatiu */
+.text-explicatiu p {
+	font-size: 13px;
+	color: #555;
+	line-height: 1.4;
+	margin: 5px 0;
+}
+
+.item-llista-petit p {
+	font-weight: 800;
+	margin: 3px 0;
+}
+
+.nota-peu-video {
+	font-size: 12px;
+	color: #888;
+	font-style: italic;
+	margin-top: 5px;
+}
+
+.text-explicatiu a {
+	display: inline-block;
+	margin-top: 8px;
+	font-size: 13px;
+	color: #1F85DE;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+.text-explicatiu a:hover {
+	text-decoration: underline;
+}
+
+/* ============================================ */
+/* CSS PÀGINA 4 */
+/* ============================================ */
+
+.contingut-pagina4-wrapper {
+	max-width: 1000px;
+	margin: 0 auto;
+	padding: 15px 20px;
+	background-color: white;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.caixa-intro-botiga {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	background-color: #cae3f6;
+	padding: 12px;
+	border-radius: 8px;
+	margin-bottom: 0px;
+}
+
+.icona-botiga {
+	width: 30px;
+}
+
+.grid-pagina4 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	margin-top: 5px;
+	max-height: calc(70vh - 130px);
+	overflow-y: auto;
+}
+
+.capcalera-columna {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: rgb(96, 50, 6);
+	padding: 8px 10px;
+	border-radius: 8px;
+	margin-bottom: 0px;
+}
+
+.icona-capcalera {
+	width: 30px;
+}
+
+.llista-numerada .item-num {
+	display: flex;
+	gap: 5px;
+	margin-bottom: 15px;
+}
+
+.numero-gran {
+	font-size: 18px;
+	font-weight: 800;
+	color: #1F85DE;
+}
+
+.text-item p {
+	font-size: 13px;
+	line-height: 1.4;
+}
+
+.llista-icones .item-icon {
+	display: flex;
+	gap: 10px;
+	margin-bottom: 15px;
+}
+
+.icona-item {
+	width: 40px;
+	height: 40px;
+	object-fit: contain;
+}
+
+/* ============================================ */
+/* RESPONSIVE DESIGN */
+/* ============================================ */
+
+@media (max-width: 768px) {
+	.contingut-principal,
+	.grid-pagina3,
+	.grid-pagina4 {
+		grid-template-columns: 1fr;
+	}
+
+	.seccio-beneficis,
+	.idees-contingut {
+		flex-direction: column;
+	}
+
+	.idea-box + .idea-box {
+		border-left: none;
+		border-top: 1px dashed #cccccc;
+		padding-left: 0;
+		padding-top: 10px;
+	}
+
+	.boton-h1 {
+		font-size: 1.5rem;
+	}
+}

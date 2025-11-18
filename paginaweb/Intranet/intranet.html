@@ -20,7 +20,7 @@
 	<!-- ============================================ -->
 	<header class="barradalt">
 		<div class="barradalt">
-			<img src="LOGO.png" alt="Logo montsià30" style="width: 100px; height: auto;">
+			<img src="LOGO.png" alt="Logo montsià30" class="logo-header">
 			<!-- El text d'aquest botó canvia segons la vista activa -->
 			<button class="boton-h1" id="btnHeader">MONTSIÀ30</button>
 		</div>
@@ -30,38 +30,33 @@
 	<!-- VISTA 1: LOGIN -->
 	<!-- Formulari per accedir a la intranet -->
 	<!-- ============================================ -->
-	<main id="vistaLogin" class="vista activa"
-		style="flex-direction: column; justify-content: center; align-items: center; padding: 50px;">
-		<h2>🔐 Accés a la Intranet</h2>
+	<main id="vistaLogin" class="vista activa vista-centrada">
+		<h2>Accés a la Intranet</h2>
 
 		<!-- Formulari de login -->
-		<form id="loginForm"
-			style="width: 350px; background-color: #dce8f7; padding: 25px; border-radius: 8px; border: 1px solid #1f85de;">
+		<form id="loginForm" class="form-auth">
 
 			<!-- Camp de correu electrònic -->
-			<div style="margin-bottom: 15px;">
+			<div class="form-group">
 				<label for="usuariLogin">Correu Electrònic:</label>
-				<input type="email" id="usuariLogin" name="usuari" required placeholder="El teu correu..."
-					style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+				<input type="email" id="usuariLogin" name="usuari" required placeholder="El teu correu..." class="form-input">
 			</div>
 
 			<!-- Camp de contrasenya -->
-			<div style="margin-bottom: 15px;">
+			<div class="form-group">
 				<label for="contrasenyaLogin">Contrasenya:</label>
 				<input type="password" id="contrasenyaLogin" name="contrasenya" required
-					placeholder="La teva contrasenya..."
-					style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+					placeholder="La teva contrasenya..." class="form-input">
 			</div>
 
 			<!-- Botó per enviar el formulari -->
-			<button type="submit"
-				style="background-color: #1f85de; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px;">
+			<button type="submit" class="btn-submit">
 				Accedeix
 			</button>
 
 			<!-- Enllaç per anar a la pàgina de registre -->
-			<p style="text-align: center; margin-top: 20px;">
-				Encara no tens compte? <a href="#" id="linkRegistre" style="color: #1f85de;">Registra't aquí</a>
+			<p class="form-link-text">
+				Encara no tens compte? <a href="#" id="linkRegistre" class="form-link">Registra't aquí</a>
 			</p>
 		</form>
 	</main>
@@ -70,96 +65,137 @@
 	<!-- VISTA 2: REGISTRE -->
 	<!-- Formulari per crear un nou compte d'usuari -->
 	<!-- ============================================ -->
-	<main id="vistaRegistre" class="vista"
-		style="flex-direction: column; justify-content: center; align-items: center; padding: 50px;">
-		<h2>📝 Registre d'Usuari</h2>
+	<main id="vistaRegistre" class="vista vista-centrada">
+		<h2>Registre d'Usuari</h2>
 
 		<!-- Formulari de registre -->
-		<form id="registreForm"
-			style="width: 350px; background-color: #dce8f7; padding: 25px; border-radius: 8px; border: 1px solid #1f85de;">
+		<form id="registreForm" class="form-auth">
 
 			<!-- Camp de correu electrònic amb validació -->
-			<div style="margin-bottom: 15px;">
+			<div class="form-group">
 				<label for="usuariRegistre">Correu Electrònic (usuari):</label>
 				<input type="email" id="usuariRegistre" name="usuari" required placeholder="exemple@montsia30.net"
-					style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+					class="form-input">
 				<!-- Missatge d'error per al correu -->
-				<small id="usuariError" style="color: red;"></small>
-				<small style="display: block; margin-top: 5px; font-size: 0.85rem; color: #718096;">
+				<small id="usuariError" class="form-error"></small>
+				<small class="form-help-text">
 					* Ha de ser del domini @montsia30.net
 				</small>
 			</div>
 
 			<!-- Camp de contrasenya amb validació -->
-			<div style="margin-bottom: 15px;">
+			<div class="form-group">
 				<label for="contrasenyaRegistre">Contrasenya:</label>
 				<input type="password" id="contrasenyaRegistre" name="contrasenya" required
-					style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+					class="form-input">
 				<!-- Missatge d'error per a la contrasenya -->
-				<small id="passError" style="color: red;"></small>
+				<small id="passError" class="form-error"></small>
 				<!-- Requisits de la contrasenya -->
-				<div style="margin-top: 8px; font-size: 0.85rem; color: #718096;">
-					<p style="margin: 3px 0;">✓ Mínim 8 caràcters</p>
-					<p style="margin: 3px 0;">✓ Almenys una majúscula i una minúscula</p>
-					<p style="margin: 3px 0;">✓ Almenys un caràcter especial</p>
+				<div class="password-requirements">
+					<p>✓ Mínim 8 caràcters</p>
+					<p>✓ Almenys una majúscula i una minúscula</p>
+					<p>✓ Almenys un caràcter especial</p>
 				</div>
 			</div>
 
 			<!-- Botó per enviar el formulari de registre -->
-			<button type="submit"
-				style="background-color: #1f85de; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px;">
+			<button type="submit" class="btn-submit">
 				Registra't
 			</button>
 
 			<!-- Enllaç per tornar al login -->
-			<p style="text-align: center; margin-top: 20px;">
-				Ja tens compte? <a href="#" id="linkLogin" style="color: #1f85de;">Accedeix aquí</a>
+			<p class="form-link-text">
+				Ja tens compte? <a href="#" id="linkLogin" class="form-link">Accedeix aquí</a>
 			</p>
 		</form>
 	</main>
 
 	<!-- ============================================ -->
-	<!-- VISTA 3: MAIN (Selecció d'Empresa i Diagnosi) -->
+	<!-- VISTA 3: MAIN (Llistat d'Empreses amb Filtres) -->
 	<!-- Pàgina principal de la intranet -->
 	<!-- ============================================ -->
-	<main id="vistaMain" class="vista" style="flex-direction: column; align-items: center; padding: 50px;">
-		<h2>🏭 Selecció d'Empresa i Diagnosi</h2>
+	<main id="vistaMain" class="vista vista-main">
 
-		<!-- Contenidor del formulari de selecció -->
-		<div
-			style="width: 600px; padding: 20px; background-color: #f7f7f7; border-radius: 8px; border: 1px solid #ccc;">
+		<!-- SIDEBAR AMB FILTRES -->
+		<aside id="filtres" class="sidebar-filtres">
+			<h3 class="filtres-titol">Filtres</h3>
 
-			<!-- Selector d'empresa -->
-			<label for="empresa" style="font-weight: bold; display: block; margin-bottom: 10px;">
-				1. Tria l'Empresa:
-			</label>
-			<select id="empresa" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #1f85de;">
-				<option value="" disabled selected>--- Selecciona una empresa del llistat ---</option>
-				<option value="EmpresaA">Empresa Comercial (Montsià)</option>
-				<option value="EmpresaB">Empresa Industrial (Ebre)</option>
-				<option value="EmpresaC">Empresa de Serveis (Delta)</option>
-			</select>
+			<!-- Cerca per nom/municipi -->
+			<div class="filtre-group">
+				<label for="cercaNom" class="filtre-label">Cerca (nom/municipi):</label>
+				<input type="text" id="cercaNom" placeholder="Buscar..." class="filtre-input">
+			</div>
 
-			<!-- Selector de tipus de diagnosi -->
-			<label for="diagnosi" style="font-weight: bold; display: block; margin-bottom: 10px;">
-				2. Tria el Formulari de Diagnosi:
-			</label>
-			<select id="diagnosi" style="width: 100%; padding: 10px; margin-bottom: 30px; border: 1px solid #1f85de;">
-				<option value="" disabled selected>--- Selecciona el tipus d'autodiagnosi ---</option>
-				<option value="comercial">Autodiagnosi Sector Comercial</option>
-				<option value="altres" disabled>Autodiagnosi Sector Industrial (Propera versió)</option>
-				<option value="altres" disabled>Autodiagnosi Sector Serveis (Propera versió)</option>
-			</select>
+			<!-- Filtre per sector -->
+			<div class="filtre-group">
+				<label for="filtreSector" class="filtre-label">Sector:</label>
+				<select id="filtreSector" class="filtre-select">
+					<option value="">Tots</option>
+					<option value="Alimentació">Alimentació</option>
+					<option value="Comerç">Comerç</option>
+					<option value="Industrial">Industrial</option>
+					<option value="Serveis">Serveis</option>
+					<option value="Tecnologia">Tecnologia</option>
+				</select>
+			</div>
 
-			<!-- Botó per iniciar la diagnosi (s'activa només amb seleccions vàlides) -->
-			<button id="iniciaDiagnosi" disabled
-				style="background-color: #555; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: not-allowed; width: 100%; font-size: 1.1rem;">
-				Inicia l'Autodiagnosi
+			<!-- Filtre per estat de l'empresa -->
+			<div class="filtre-group">
+				<label for="filtreEstat" class="filtre-label">Estat empresa:</label>
+				<select id="filtreEstat" class="filtre-select">
+					<option value="">Tots</option>
+					<option value="activa">Activa</option>
+					<option value="inactiva">Inactiva</option>
+				</select>
+			</div>
+
+			<!-- Filtre per digitalització -->
+			<div class="filtre-group">
+				<label for="filtreDigital" class="filtre-label">Digitalització:</label>
+				<select id="filtreDigital" class="filtre-select">
+					<option value="">Tots</option>
+					<option value="pendent">Pendent</option>
+					<option value="en_progres">En progrés</option>
+					<option value="finalitzada">Finalitzada</option>
+				</select>
+			</div>
+
+			<!-- Filtre per sostenibilitat -->
+			<div class="filtre-group">
+				<label for="filtreSostenibilitat" class="filtre-label">Sostenibilitat:</label>
+				<select id="filtreSostenibilitat" class="filtre-select">
+					<option value="">Tots</option>
+					<option value="pendent">Pendent</option>
+					<option value="en_progres">En progrés</option>
+					<option value="finalitzada">Finalitzada</option>
+				</select>
+			</div>
+
+			<!-- Ordenar per -->
+			<div class="filtre-group">
+				<label for="ordenarPer" class="filtre-label">Ordenar per:</label>
+				<select id="ordenarPer" class="filtre-select">
+					<option value="nom">Nom</option>
+					<option value="municipi">Municipi</option>
+					<option value="sector">Sector</option>
+				</select>
+			</div>
+
+			<button id="aplicarFiltres" class="btn-aplicar-filtres">
+				Aplicar Filtres
 			</button>
+		</aside>
 
-			<!-- Missatge d'error o informació -->
-			<small style="display: block; text-align: center; margin-top: 10px; color: red;" id="missatgeError"></small>
-		</div>
+		<!-- ZONA PRINCIPAL AMB LES FITXES D'EMPRESES -->
+		<section id="zonaEmpreses" class="zona-empreses">
+			<h2 class="empreses-titol">Intranet Montsià30</h2>
+			<div id="contenidorEmpreses" class="grid-empreses">
+				<!-- Les fitxes d'empreses es carregaran aquí dinàmicament -->
+				<p class="missatge-carregant">
+					Carregant empreses...
+				</p>
+			</div>
+		</section>
 	</main>
 
 	<!-- ============================================ -->
@@ -172,7 +208,8 @@
 		</div>
 	</footer>
 
-	<!-- Enllaç al fitxer JavaScript extern -->
+	<!-- Enllaç als fitxers JavaScript externs -->
+	<script src="dades-empreses.js"></script>
 	<script src="intranet.js"></script>
 </body>
 

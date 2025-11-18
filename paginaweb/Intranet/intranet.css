@@ -3,17 +3,18 @@
 /* ============================================ */
 
 /* --- ESTRUCTURA BÀSICA DE LA PÀGINA --- */
+
 html,
 body {
 	margin: 0;
 	padding: 0;
-	height: 100%;
+	min-height: 100%;
 }
 
 body {
 	display: flex;
 	flex-direction: column;
-	height: 100vh;
+	min-height: 100vh;
 	font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	background: linear-gradient(135deg, #f5f8fc 0%, #e8f0f8 100%);
 }
@@ -22,7 +23,16 @@ body {
 /* CAPÇALERA (HEADER) */
 /* ============================================ */
 
+/* Header fix a dalt */
+header {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Contenidor principal de la capçalera */
+
 .barradalt {
 	display: flex;
 	align-items: center;
@@ -33,12 +43,14 @@ body {
 }
 
 /* Logo a la capçalera */
+
 .barradalt img {
 	width: 100px;
 	height: auto;
 }
 
 /* Estil per als títols h1 */
+
 h1 {
 	font-weight: 800;
 	font-family: 'Poppins', sans-serif;
@@ -46,6 +58,7 @@ h1 {
 }
 
 /* Botó de la capçalera (Tornar a Inici / Tanca Sessió) */
+
 .boton-h1 {
 	all: unset;
 	/* Reset de tots els estils per defecte */
@@ -68,15 +81,17 @@ h1 {
 /* ============================================ */
 
 /* Contenidor principal que ocupa l'espai disponible */
+
 main {
-	flex: 1;
+	flex: 1 0 auto;
 	/* Fa que ocupi tot l'espai disponible entre header i footer */
 	display: flex;
 	flex-direction: row;
-	height: 100%;
-	align-items: stretch;
+	align-items: flex-start;
 	gap: 30px;
 	padding: 30px;
+	padding-bottom: 120px;
+	margin-bottom: 70px;
 	-webkit-text-stroke: 1px black;
 }
 
@@ -85,11 +100,13 @@ main {
 /* ============================================ */
 
 /* Per defecte, totes les vistes estan ocultes */
+
 .vista {
 	display: none;
 }
 
 /* La vista activa es mostra */
+
 .vista.activa {
 	display: flex;
 }
@@ -99,6 +116,17 @@ main {
 /* ============================================ */
 
 /* Contenidor del footer */
+
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	z-index: 90;
+	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
 .barrabaix {
 	display: flex;
 	align-items: center;
@@ -106,7 +134,7 @@ main {
 	gap: 30px;
 	background-color: #dce8f7;
 	color: #1F85DE;
-	padding: 10px 20px;
+	padding: 15px 20px;
 	box-sizing: border-box;
 	border-top: 2px solid #1F85DE;
 }
@@ -117,6 +145,7 @@ main {
 /* ============================================ */
 
 /* Botons genèrics del main (si es necessiten) */
+
 main>button {
 	flex: 1;
 	width: 100%;
@@ -142,11 +171,13 @@ main>button {
 }
 
 /* Efecte hover per als botons */
+
 main button:hover {
 	filter: brightness(1.2);
 }
 
 /* Classes específiques per botons amb imatge de fons */
+
 .btn-soste {
 	background-image: url('soste.png');
 	position: relative;
@@ -181,6 +212,7 @@ main button:hover {
 }
 
 /* Efecte d'escala al passar el ratolí per sobre */
+
 main>button {
 	transition: transform 250ms ease, filter 200ms ease;
 	will-change: transform;
@@ -194,12 +226,14 @@ main>button.hover-scale {
 }
 
 /* Efecte d'escala al fer clic */
+
 main>button.active-scale {
 	transform: scale(0.96);
 	transition-duration: 120ms;
 }
 
 /* Text dins dels botons */
+
 main>button span {
 	position: absolute;
 	bottom: 10px;
@@ -211,6 +245,7 @@ main>button span {
 }
 
 /* Anular el brillo quan es fa clic */
+
 main>button.no-hover-bright {
 	filter: none !important;
 }
@@ -220,6 +255,7 @@ main>button.no-hover-bright {
 /* ============================================ */
 
 /* Títols de les seccions */
+
 h2 {
 	color: #1F85DE;
 	font-size: 2rem;
@@ -231,6 +267,7 @@ h2 {
 }
 
 /* Estils per als formularis (login i registre) */
+
 form {
 	background: white !important;
 	box-shadow: 0 8px 30px rgba(31, 133, 222, 0.12) !important;
@@ -247,6 +284,7 @@ form:hover {
 }
 
 /* Etiquetes dels camps */
+
 form label {
 	color: #2d3748;
 	font-weight: 600;
@@ -257,6 +295,7 @@ form label {
 }
 
 /* Camps d'entrada (inputs) */
+
 form input[type="email"],
 form input[type="password"] {
 	border: 2px solid #dce8f7 !important;
@@ -283,6 +322,7 @@ form input[type="password"]::placeholder {
 }
 
 /* Botons dels formularis */
+
 form button[type="submit"] {
 	background: linear-gradient(135deg, #1F85DE 0%, #1670c4 100%) !important;
 	font-weight: 600;
@@ -308,6 +348,7 @@ form button[type="submit"]:active {
 }
 
 /* Missatges d'error */
+
 small[id$="Error"] {
 	display: block;
 	margin-top: 5px;
@@ -317,6 +358,7 @@ small[id$="Error"] {
 }
 
 /* Text i enllaços dins dels formularis */
+
 form p {
 	font-family: 'Poppins', sans-serif;
 	font-size: 0.95rem;
@@ -336,6 +378,7 @@ form a:hover {
 }
 
 /* Indicacions i ajudes */
+
 form small {
 	font-family: 'Poppins', sans-serif;
 }
@@ -345,6 +388,7 @@ form small {
 /* ============================================ */
 
 /* Contenidor principal de selecció */
+
 #vistaMain>div {
 	background: white !important;
 	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1) !important;
@@ -359,6 +403,7 @@ form small {
 }
 
 /* Selectors (dropdowns) */
+
 select {
 	border: 2px solid #dce8f7 !important;
 	border-radius: 6px !important;
@@ -379,6 +424,7 @@ select:hover {
 }
 
 /* Botó d'iniciar diagnosi */
+
 #iniciaDiagnosi {
 	transition: all 0.3s ease !important;
 	font-weight: 600 !important;
@@ -396,12 +442,14 @@ select:hover {
 }
 
 /* Missatge d'error a la vista main */
+
 #missatgeError {
 	font-weight: 500;
 	animation: shake 0.5s;
 }
 
 /* Animació per als missatges d'error */
+
 @keyframes shake {
 
 	0%,
@@ -470,4 +518,510 @@ select:hover {
 	.barrabaix {
 		padding: 10px 15px;
 	}
+}
+
+/* ============================================ */
+/* ESTILS PER A LA PÀGINA DE DETALL D'EMPRESA */
+/* ============================================ */
+
+.detall-empresa {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 30px;
+}
+
+.card-empresa {
+	background: white;
+	border-radius: 16px;
+	padding: 30px;
+	box-shadow: 0 8px 30px rgba(31, 133, 222, 0.12);
+	border: 2px solid #dce8f7;
+	margin-bottom: 30px;
+}
+
+.estat-badge {
+	display: inline-block;
+	padding: 8px 16px;
+	border-radius: 20px;
+	font-size: 0.9rem;
+	font-weight: 600;
+	margin-left: 15px;
+}
+
+.estat-activa {
+	background: #48bb78;
+	color: white;
+}
+
+.estat-inactiva {
+	background: #cbd5e0;
+	color: #2d3748;
+}
+
+.info-row {
+	display: flex;
+	padding: 15px 0;
+	border-bottom: 1px solid #e2e8f0;
+}
+
+.info-row:last-child {
+	border-bottom: none;
+}
+
+.info-label {
+	flex: 0 0 200px;
+	font-weight: 600;
+	color: #2d3748;
+	font-family: 'Poppins', sans-serif;
+}
+
+.info-value {
+	flex: 1;
+	color: #4a5568;
+}
+
+.section-title {
+	color: #1F85DE;
+	font-size: 1.5rem;
+	font-weight: 700;
+	margin-bottom: 20px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.progress-bar {
+	width: 100%;
+	height: 30px;
+	background: #e2e8f0;
+	border-radius: 15px;
+	overflow: hidden;
+	position: relative;
+}
+
+.progress-fill {
+	height: 100%;
+	background: linear-gradient(135deg, #1F85DE 0%, #1670c4 100%);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	font-weight: 600;
+	font-size: 0.9rem;
+	transition: width 1s ease;
+}
+
+.btn-accio {
+	padding: 12px 24px;
+	border-radius: 10px;
+	font-weight: 600;
+	font-family: 'Poppins', sans-serif;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	border: none;
+	font-size: 1rem;
+	margin-right: 15px;
+}
+
+.btn-primary {
+	background: linear-gradient(135deg, #1F85DE 0%, #1670c4 100%);
+	color: white;
+}
+
+.btn-primary:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 6px 16px rgba(31, 133, 222, 0.4);
+}
+
+.btn-secondary {
+	background: white;
+	color: #1F85DE;
+	border: 2px solid #1F85DE;
+}
+
+.btn-secondary:hover {
+	background: #f5f8fc;
+}
+
+.logo-header {
+	width: 100px;
+	height: auto;
+}
+
+.empresa-header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.empresa-header-content {
+	flex: 1;
+}
+
+.empresa-nom {
+	margin: 0;
+	color: #1F85DE;
+	font-family: 'Poppins', sans-serif;
+}
+
+.badge-estat {
+	padding: 4px 12px;
+	border-radius: 12px;
+	display: inline-block;
+}
+
+.progress-section {
+	margin-top: 20px;
+}
+
+.progress-label {
+	margin-bottom: 10px;
+}
+
+.progress-fill {
+	width: 0%;
+}
+
+.botons-accions {
+	margin-top: 30px;
+}
+
+.resultat-row {
+	display: none;
+}
+
+.info-resultat {
+	font-weight: 600;
+	color: #1F85DE;
+}
+
+.link-web {
+	color: #1F85DE;
+	text-decoration: none;
+}
+
+/* ============================================ */
+/* CLASSES PER A LES VISTES D'AUTENTICACIÓ */
+/* ============================================ */
+
+.vista-centrada {
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 50px;
+}
+
+.form-auth {
+	width: 350px;
+	background-color: #dce8f7;
+	padding: 25px;
+	border-radius: 8px;
+	border: 1px solid #1f85de;
+}
+
+.form-group {
+	margin-bottom: 15px;
+}
+
+.form-input {
+	width: 100%;
+	padding: 8px;
+	margin-top: 5px;
+	box-sizing: border-box;
+}
+
+.btn-submit {
+	background-color: #1f85de;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	width: 100%;
+	margin-top: 10px;
+}
+
+.form-link-text {
+	text-align: center;
+	margin-top: 20px;
+}
+
+.form-link {
+	color: #1f85de;
+}
+
+.form-error {
+	color: red;
+}
+
+.form-help-text {
+	display: block;
+	margin-top: 5px;
+	font-size: 0.85rem;
+	color: #718096;
+}
+
+.password-requirements {
+	margin-top: 8px;
+	font-size: 0.85rem;
+	color: #718096;
+}
+
+.password-requirements p {
+	margin: 3px 0;
+}
+
+/* ============================================ */
+/* CLASSES PER A LA VISTA MAIN (LLISTAT D'EMPRESES) */
+/* ============================================ */
+
+.vista-main {
+	flex-direction: row;
+	align-items: flex-start;
+	padding: 30px;
+	gap: 30px;
+}
+
+.sidebar-filtres {
+	width: 280px;
+	background: white;
+	padding: 25px;
+	border-radius: 12px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	position: sticky;
+	top: 100px;
+	align-self: flex-start;
+	max-height: calc(100vh - 180px);
+	overflow-y: auto;
+}
+
+.filtres-titol {
+	margin-top: 0;
+	color: #1F85DE;
+	font-family: 'Poppins', sans-serif;
+	font-size: 1.3rem;
+}
+
+.filtre-group {
+	margin-bottom: 20px;
+}
+
+.filtre-label {
+	display: block;
+	font-weight: 600;
+	margin-bottom: 8px;
+	font-family: 'Poppins', sans-serif;
+	color: #2d3748;
+}
+
+.filtre-input {
+	width: 100%;
+	padding: 10px;
+	border: 2px solid #dce8f7;
+	border-radius: 8px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.filtre-select {
+	width: 100%;
+	padding: 10px;
+	border: 2px solid #dce8f7;
+	border-radius: 8px;
+	font-family: 'Poppins', sans-serif;
+}
+
+.btn-aplicar-filtres {
+	width: 100%;
+	padding: 12px;
+	background: linear-gradient(135deg, #1F85DE 0%, #1670c4 100%);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	font-family: 'Poppins', sans-serif;
+	font-size: 0.95rem;
+}
+
+.zona-empreses {
+	flex: 1;
+	min-width: 0;
+	padding-bottom: 40px;
+}
+
+.empreses-titol {
+	margin-top: 0;
+}
+
+.grid-empreses {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 20px;
+	padding-bottom: 40px;
+}
+
+.missatge-carregant {
+	grid-column: 1 / -1;
+	text-align: center;
+	color: #718096;
+	padding: 40px;
+}
+
+.missatge-no-empreses {
+	grid-column: 1 / -1;
+	text-align: center;
+	padding: 40px;
+	color: #718096;
+}
+
+.missatge-no-empreses p {
+	font-size: 1.2rem;
+}
+
+.missatge-error {
+	grid-column: 1 / -1;
+	text-align: center;
+	padding: 40px;
+	color: #e53e3e;
+}
+
+.error-titol {
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.error-missatge {
+	color: #718096;
+}
+
+.btn-retry {
+	margin-top: 20px;
+	padding: 10px 20px;
+	background: #1F85DE;
+	color: white;
+	border: none;
+	border-radius: 8px;
+	cursor: pointer;
+}
+
+/* ============================================ */
+/* CLASSES PER A LES FITXES D'EMPRESES */
+/* ============================================ */
+
+.fitxa-empresa {
+	background: white;
+	border-radius: 12px;
+	padding: 20px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s ease;
+	cursor: pointer;
+	border: 2px solid #dce8f7;
+}
+
+.fitxa-empresa.fitxa-hover {
+	transform: translateY(-4px);
+	box-shadow: 0 8px 20px rgba(31, 133, 222, 0.2);
+	border-color: #1F85DE;
+}
+
+.fitxa-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: start;
+	margin-bottom: 12px;
+}
+
+.fitxa-nom {
+	margin: 0;
+	color: #1F85DE;
+	font-size: 1.1rem;
+	font-family: 'Poppins', sans-serif;
+}
+
+.badge-estat-empresa {
+	color: white;
+	padding: 4px 10px;
+	border-radius: 12px;
+	font-size: 0.75rem;
+	font-weight: 600;
+}
+
+.badge-activa {
+	background: #48bb78;
+}
+
+.badge-inactiva {
+	background: #cbd5e0;
+}
+
+.fitxa-info {
+	margin: 8px 0;
+	color: #4a5568;
+	font-size: 0.9rem;
+}
+
+.fitxa-badges {
+	margin: 12px 0;
+}
+
+.badge-digital-finalitzada {
+	background: #48bb78;
+	color: white;
+	padding: 4px 10px;
+	border-radius: 12px;
+	font-size: 0.75rem;
+	margin-right: 5px;
+}
+
+.badge-digital-progres {
+	background: #ed8936;
+	color: white;
+	padding: 4px 10px;
+	border-radius: 12px;
+	font-size: 0.75rem;
+	margin-right: 5px;
+}
+
+.badge-sostenible {
+	background: #4299e1;
+	color: white;
+	padding: 4px 10px;
+	border-radius: 12px;
+	font-size: 0.75rem;
+}
+
+.fitxa-divider {
+	border: none;
+	border-top: 1px solid #e2e8f0;
+	margin: 12px 0;
+}
+
+.fitxa-botons {
+	display: flex;
+	gap: 10px;
+	margin-top: 12px;
+}
+
+.btn-fitxa-enquesta {
+	flex: 1;
+	padding: 10px;
+	background: linear-gradient(135deg, #1F85DE 0%, #1670c4 100%);
+	color: white;
+	border: none;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	font-size: 0.85rem;
+	transition: all 0.3s ease;
+}
+
+.btn-fitxa-detalls {
+	flex: 1;
+	padding: 10px;
+	background: white;
+	color: #1F85DE;
+	border: 2px solid #1F85DE;
+	border-radius: 8px;
+	font-weight: 600;
+	cursor: pointer;
+	font-size: 0.85rem;
+	transition: all 0.3s ease;
 }

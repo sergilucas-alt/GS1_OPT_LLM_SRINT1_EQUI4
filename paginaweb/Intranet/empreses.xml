@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<empreses>
+    <empresa>
+        <id>1</id>
+        <nom>Forns de la Ràpita</nom>
+        <municipi>La Ràpita</municipi>
+        <sector>Alimentació</sector>
+        <email>info@fornsrapita.cat</email>
+        <telefon>977222333</telefon>
+        <web>https://fornsrapita.cat</web>
+        <estat>activa</estat>
+        <digitalitzacio>
+            <estat>pendent</estat>
+            <percentatge>0</percentatge>
+        </digitalitzacio>
+        <sostenibilitat>
+            <estat>finalitzada</estat>
+            <resultat>Regular - 72%</resultat>
+        </sostenibilitat>
+        <imatge>empresa1.jpg</imatge>
+    </empresa>
+    <empresa>
+        <id>2</id>
+        <nom>Empresa Comercial Montsià</nom>
+        <municipi>Amposta</municipi>
+        <sector>Comerç</sector>
+        <email>info@comercialmontsia.cat</email>
+        <telefon>977445566</telefon>
+        <web>https://comercialmontsia.cat</web>
+        <estat>activa</estat>
+        <digitalitzacio>
+            <estat>en_progres</estat>
+            <percentatge>45</percentatge>
+        </digitalitzacio>
+        <sostenibilitat>
+            <estat>pendent</estat>
+            <resultat></resultat>
+        </sostenibilitat>
+        <imatge>empresa2.jpg</imatge>
+    </empresa>
+    <empresa>
+        <id>3</id>
+        <nom>Indústries Ebre SL</nom>
+        <municipi>Tortosa</municipi>
+        <sector>Industrial</sector>
+        <email>contact@industriesebre.com</email>
+        <telefon>977888999</telefon>
+        <web>https://industriesebre.com</web>
+        <estat>activa</estat>
+        <digitalitzacio>
+            <estat>finalitzada</estat>
+            <percentatge>100</percentatge>
+        </digitalitzacio>
+        <sostenibilitat>
+            <estat>finalitzada</estat>
+            <resultat>Excel·lent - 89%</resultat>
+        </sostenibilitat>
+        <imatge>empresa3.jpg</imatge>
+    </empresa>
+    <empresa>
+        <id>4</id>
+        <nom>Serveis Delta</nom>
+        <municipi>Deltebre</municipi>
+        <sector>Serveis</sector>
+        <email>info@serveisdelta.cat</email>
+        <telefon>977333444</telefon>
+        <web>https://serveisdelta.cat</web>
+        <estat>inactiva</estat>
+        <digitalitzacio>
+            <estat>pendent</estat>
+            <percentatge>0</percentatge>
+        </digitalitzacio>
+        <sostenibilitat>
+            <estat>pendent</estat>
+            <resultat></resultat>
+        </sostenibilitat>
+        <imatge>empresa4.jpg</imatge>
+    </empresa>
+    <empresa>
+        <id>5</id>
+        <nom>Tecnologia Terres de l'Ebre</nom>
+        <municipi>Amposta</municipi>
+        <sector>Tecnologia</sector>
+        <email>hola@tecte.cat</email>
+        <telefon>977111222</telefon>
+        <web>https://tecte.cat</web>
+        <estat>activa</estat>
+        <digitalitzacio>
+            <estat>finalitzada</estat>
+            <percentatge>100</percentatge>
+        </digitalitzacio>
+        <sostenibilitat>
+            <estat>en_progres</estat>
+            <resultat></resultat>
+        </sostenibilitat>
+        <imatge>empresa5.jpg</imatge>
+    </empresa>
+</empreses>

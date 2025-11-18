@@ -1,182 +1,234 @@
+/* ============================================ */
+/* ESTILS PER A LA PÀGINA D'INICI DE MONTSIÀ30 */
+/* ============================================ */
 
-/* --- CABECERA --- */
-.barradalt {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  background-color:#dce8f7;
-  color: #1F85DE;
-  padding: 10px 20px;
-}
+/* --- ESTRUCTURA BÀSICA DE LA PÀGINA --- */
 
-.barradalt img {
-  width: 100px;
-  height: auto;
-}
-
-h1 {
-  font-weight: 800;
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-}
-
-.boton-h1 {
-  all: unset; 
-  font-size: 2.2rem;
-  font-weight: bold;
-  line-height: 1.2;
-  color: #1F85DE;
-  cursor: pointer;
-    font-weight: 800;
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-}
-
-/* --- ESTRUCTURA GENERAL --- */
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
 }
 
 body {
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
+	display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+	font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	background: linear-gradient(135deg, #f5f8fc 0%, #e8f0f8 100%);
 }
 
-/* --- MAIN (zona botones) --- */
+/* ============================================ */
+/* CAPÇALERA (HEADER) */
+/* ============================================ */
+
+header {
+	position: sticky;
+	top: 0;
+	z-index: 100;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.barradalt {
+	display: flex;
+	align-items: center;
+	gap: 30px;
+	background-color: #dce8f7;
+	color: #1F85DE;
+	padding: 10px 20px;
+}
+
+.barradalt img {
+	width: 100px;
+	height: auto;
+}
+
+h1 {
+	font-weight: 800;
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+}
+
+.boton-h1 {
+	all: unset;
+	/* Reset de tots els estils per defecte */
+	font-size: 2.2rem;
+	font-weight: 800;
+	line-height: 1.2;
+	color: #1F85DE;
+	cursor: pointer;
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+	transition: opacity 0.3s ease;
+}
+
+.boton-h1:hover {
+	opacity: 0.7;
+}
+
+/* ============================================ */
+/* ÀREA PRINCIPAL (MAIN) */
+/* ============================================ */
+
 main {
-  flex: 1; 
-  display: flex;
-  flex-direction: row;
-  height: 100%;
-  align-items: stretch; 
-  gap: 0;
-  padding: 30px; 
-  gap: 30px;   
-  -webkit-text-stroke: 1px black;
+	flex: 1;
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	align-items: stretch;
+	gap: 30px;
+	padding: 30px;
+	padding-bottom: 110px;
+	-webkit-text-stroke: 1px black;
 }
 
-/* --- BOTONES --- */
+/* ============================================ */
+/* BOTONS PRINCIPALS */
+/* ============================================ */
+
 main > button {
-  flex: 1;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  border: 3px solid #1F85DE;
-  font-family: 'arial', sans-serif;
-  font-size: 2rem;
-  color: white;
-  cursor: pointer;
-  transition: filter 0.3s;
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  vertical-align: middle;
-  overflow: hidden;
-  transform-origin: center;
-
-
-  /* asegurar fondo coherente si no se repite en cada botón */
-  background-size: cover;
-  background-position: center; 
-  background-repeat: no-repeat;
+	flex: 1;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	box-sizing: border-box;
+	border: 3px solid #1F85DE;
+	font-family: 'Arial', sans-serif;
+	font-size: 2rem;
+	color: white;
+	cursor: pointer;
+	transition: transform 250ms ease, filter 200ms ease;
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+	transform-origin: center;
+	will-change: transform;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
-.btn-soste { background-image: url('soste.png'); 
-  position: relative;           
-  background-size: cover;  
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white; 
-  text-shadow: 0 1px 2px rgba(0,0,0,0.7);
-  
-  overflow: hidden;
+main > button:hover {
+	filter: brightness(1.2);
 }
 
-main button:hover {
-  filter: brightness(1.2);
+/* Botons específics amb imatge de fons */
+
+.btn-soste {
+	background-image: url('soste.png');
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	color: white;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+	overflow: hidden;
 }
 
-.btn-intranet { 
-  background-image: url('intra.png'); 
-  position: relative;    
-  background-size: cover;    
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white;               
-  text-shadow: 0 1px 2px rgba(0,0,0,0.7);
-  
-  overflow: hidden;
+.btn-digi {
+	background-image: url('digi.png');
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	color: white;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+	overflow: hidden;
 }
 
-main button:hover {
-  filter: brightness(1.2);
+.btn-intranet {
+	background-image: url('intra.png');
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	color: white;
+	text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+	overflow: hidden;
 }
 
-.btn-digi { 
-  background-image: url('digi.png'); 
-  position: relative;        
-  background-size: cover;    
-  background-position: center;
-  background-repeat: no-repeat;
-  color: white;      
-  text-shadow: 0 1px 2px rgba(0,0,0,0.7);
-  
-  overflow: hidden;
-}
-
-main button:hover {
-  filter: brightness(1.2);
-}
-
-/* efecto de escala (activado por JS) */
-main > button {
-  transition: transform 250ms ease, filter 200ms ease;
-  will-change: transform;
-  transform-origin: center;
-}
+/* Efecte d'escala al passar el ratolí per sobre */
 
 main > button.hover-scale {
-  transform: scale(1.06);
-    position: relative;
-  z-index: 2; 
+	transform: scale(1.06);
+	position: relative;
+	z-index: 2;
 }
+
+/* Efecte d'escala al fer clic */
 
 main > button.active-scale {
-  transform: scale(0.96);
-  /* transición más rápida al click */
-  transition-duration: 120ms;
+	transform: scale(0.96);
+	transition-duration: 120ms;
 }
 
+/* Text dins dels botons */
 
 main > button span {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  color: white;
-  font-weight: bold;
-  text-shadow: 1px 1px 2px black;
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	color: white;
+	font-weight: bold;
+	text-shadow: 1px 1px 2px black;
 }
 
-    /* anular el brillo que aplica :hover cuando se hace click */
-    main > button.no-hover-bright {
-      filter: none !important;
-    }
+/* Anular el brillo quan es fa clic */
 
-/* --- FOOTER --- */
+main > button.no-hover-bright {
+	filter: none !important;
+}
+
+/* ============================================ */
+/* PEU DE PÀGINA (FOOTER) */
+/* ============================================ */
+
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+	z-index: 90;
+	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
 .barrabaix {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  background-color: #dce8f7;
-  color: #1F85DE;
-  padding: 10px 20px;
-  box-sizing: border-box;
-  border-top: 2px solid #1F85DE;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+	background-color: #dce8f7;
+	color: #1F85DE;
+	padding: 15px 20px;
+	box-sizing: border-box;
+	border-top: 2px solid #1F85DE;
+}
+
+/* ============================================ */
+/* RESPONSIVE DESIGN */
+/* ============================================ */
+
+@media (max-width: 768px) {
+	main {
+		flex-direction: column;
+		padding: 20px;
+	}
+
+	main > button {
+		font-size: 1.5rem;
+		min-height: 150px;
+	}
+
+	.boton-h1 {
+		font-size: 1.5rem;
+	}
+
+	.barradalt,
+	.barrabaix {
+		padding: 10px 15px;
+	}
 }

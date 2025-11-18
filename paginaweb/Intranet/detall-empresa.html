@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Detall Empresa - Intranet Montsià 30</title>
+	<!-- Fonts de Google -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+		rel="stylesheet">
+	<!-- Enllaç al fitxer CSS extern -->
+	<link rel="stylesheet" href="intranet.css">
+</head>
+
+<body>
+	<!-- HEADER -->
+	<header class="barradalt">
+		<div class="barradalt">
+			<img src="LOGO.png" alt="Logo montsià30" class="logo-header">
+			<button class="boton-h1" id="btnTornar">← Tornar al llistat</button>
+		</div>
+	</header>
+
+	<!-- CONTINGUT PRINCIPAL -->
+	<main class="detall-empresa">
+		<!-- Informació bàsica de l'empresa -->
+		<div class="card-empresa">
+			<div class="empresa-header">
+				<div class="empresa-header-content">
+					<h1 id="nomEmpresa" class="empresa-nom">Carregant...</h1>
+					<span id="estatBadge" class="estat-badge estat-activa">Activa</span>
+				</div>
+			</div>
+
+			<div class="section-title">Informació de Contacte</div>
+			<div class="info-row">
+				<div class="info-label">Municipi:</div>
+				<div class="info-value" id="municipi">-</div>
+			</div>
+			<div class="info-row">
+				<div class="info-label">Sector:</div>
+				<div class="info-value" id="sector">-</div>
+			</div>
+			<div class="info-row">
+				<div class="info-label">Email:</div>
+				<div class="info-value" id="email">-</div>
+			</div>
+			<div class="info-row">
+				<div class="info-label">Telèfon:</div>
+				<div class="info-value" id="telefon">-</div>
+			</div>
+			<div class="info-row">
+				<div class="info-label">Web:</div>
+				<div class="info-value">
+					<a id="web" href="#" target="_blank" class="link-web">-</a>
+				</div>
+			</div>
+		</div>
+
+		<!-- Digitalització -->
+		<div class="card-empresa">
+			<div class="section-title">Digitalització</div>
+			<div class="info-row">
+				<div class="info-label">Estat:</div>
+				<div class="info-value">
+					<span id="estatDigital" class="badge-estat">-</span>
+				</div>
+			</div>
+			<div class="progress-section">
+				<div class="info-label progress-label">Progrés:</div>
+				<div class="progress-bar">
+					<div class="progress-fill" id="progressDigital">0%</div>
+				</div>
+			</div>
+			<div class="botons-accions">
+				<button class="btn-accio btn-primary" id="btnEnquestaDigital">Fer enquesta</button>
+				<button class="btn-accio btn-secondary" id="btnVeureRespostesDigital">Veure respostes</button>
+			</div>
+		</div>
+
+		<!-- Sostenibilitat -->
+		<div class="card-empresa">
+			<div class="section-title">Sostenibilitat</div>
+			<div class="info-row">
+				<div class="info-label">Estat:</div>
+				<div class="info-value">
+					<span id="estatSostenibilitat" class="badge-estat">-</span>
+				</div>
+			</div>
+			<div class="info-row resultat-row" id="resultatRow">
+				<div class="info-label">Resultat:</div>
+				<div class="info-value info-resultat" id="resultatSostenibilitat">-</div>
+			</div>
+			<div class="botons-accions">
+				<button class="btn-accio btn-primary" id="btnEnquestaSostenibilitat">Fer enquesta</button>
+				<button class="btn-accio btn-secondary" id="btnVeureRespostesSostenibilitat">Veure respostes</button>
+			</div>
+		</div>
+	</main>
+
+	<!-- FOOTER -->
+	<footer>
+		<div class="barrabaix">
+			<p>Correu: atencioclient@montsià30.org</p>
+			<p>Telèfon: 647 72 39 47</p>
+		</div>
+	</footer>
+
+	<!-- Scripts -->
+	<script src="dades-empreses.js"></script>
+	<script src="detall-empresa.js"></script>
+</body>
+
+</html>

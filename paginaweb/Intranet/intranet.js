@@ -28,12 +28,28 @@ function mostrarVista(nomVista) {
     if (nomVista === 'main') {
         // Si estem a la pàgina principal, el botó tanca la sessió
         btnHeader.textContent = 'Tanca Sessió';
-        btnHeader.onclick = () => mostrarVista('login');
+        btnHeader.removeEventListener('click', tornarAInici);
+        btnHeader.addEventListener('click', tancarSessio);
+
+        // Carrega les empreses si encara no s'han carregat
+        if (totesLesEmpreses.length === 0) {
+            carregarEmpreses();
+        }
     } else {
         // Si estem al login o registre, el botó torna a la pàgina d'inici
         btnHeader.textContent = 'MONTSIÀ30';
-        btnHeader.onclick = () => window.location.href = '../pagina_inici/OPT.html';
+        btnHeader.removeEventListener('click', tancarSessio);
+        btnHeader.addEventListener('click', tornarAInici);
     }
+}
+
+// Funcions auxiliars per als event listeners
+function tancarSessio() {
+    mostrarVista('login');
+}
+
+function tornarAInici() {
+    window.location.href = '../pagina_inici/OPT.html';
 }
 
 // ============================================
@@ -177,67 +193,222 @@ document.getElementById('linkLogin').addEventListener('click', (e) => {
 });
 
 // ============================================
-// LÒGICA DE LA INTRANET (Selecció d'Empresa i Diagnosi)
-// Gestiona la selecció d'empresa i el llançament de l'autodiagnosi
+// LÒGICA DE LA INTRANET (Llistat d'Empreses amb Filtres)
+// Gestiona la càrrega, filtració i visualització de les empreses
 // ============================================
 
-// Referències als elements de la pàgina principal
-const empresaSelector = document.getElementById('empresa');
-const diagnosiSelector = document.getElementById('diagnosi');
-const botoDiagnosi = document.getElementById('iniciaDiagnosi');
-const missatgeError = document.getElementById('missatgeError');
+// Array per emmagatzemar totes les empreses carregades del XML
+let totesLesEmpreses = [];
 
 // URL de l'enquesta d'autodiagnosi
 const URL_ENQUESTA = "https://ccam.gencat.cat/ca/serveis/autodiagnosi/";
 
 /**
- * Comprova les seleccions dels dropdowns i activa/desactiva el botó segons correspongui
+ * Carrega la llista d'empreses des del fitxer de dades JavaScript
  */
-function comprovarSeleccions() {
-    // Obté els valors seleccionats
-    const empresaSeleccionada = empresaSelector.value;
-    const diagnosiSeleccionada = diagnosiSelector.value;
+function carregarEmpreses() {
+    try {
+        // Obté les empreses del fitxer dades-empreses.js
+        totesLesEmpreses = obtenirEmpreses();
 
-    // Neteja els missatges d'error
-    missatgeError.textContent = '';
+        console.log('✅ Empreses carregades correctament:', totesLesEmpreses.length);
 
-    // Per defecte, el botó està desactivat
-    botoDiagnosi.disabled = true;
-    botoDiagnosi.style.cursor = 'not-allowed';
-    botoDiagnosi.style.backgroundColor = '#555';
+        // Mostra totes les empreses inicialment
+        mostrarEmpreses(totesLesEmpreses);
+    } catch (error) {
+        console.error('❌ Error carregant empreses:', error);
+        const contenidor = document.getElementById('contenidorEmpreses');
+        contenidor.innerHTML = `
+            <div class="missatge-error">
+                <p class="error-titol">❌ Error carregant les empreses</p>
+                <p class="error-missatge">${error.message}</p>
+                <button class="btn-retry" id="btnRetry">
+                    Tornar a intentar
+                </button>
+            </div>
+        `;
 
-    // Comprova si s'han seleccionat ambdues opcions
-    if (empresaSeleccionada && diagnosiSeleccionada) {
-        // Només la diagnosi 'comercial' està disponible
-        if (diagnosiSeleccionada === 'comercial') {
-            // Activa el botó
-            botoDiagnosi.disabled = false;
-            botoDiagnosi.style.cursor = 'pointer';
-            botoDiagnosi.style.backgroundColor = '#1f85de';
-        } else {
-            // Mostra missatge per a diagnosis no disponibles
-            missatgeError.textContent = 'Aquesta diagnosi no està disponible en la versió actual.';
-        }
-    } else if (empresaSeleccionada || diagnosiSeleccionada) {
-        // Mostra missatge si només s'ha seleccionat una opció
-        missatgeError.textContent = 'Cal seleccionar tant una empresa com el tipus de diagnosi.';
+        // Afegir event listener al botó de retry
+        document.getElementById('btnRetry').addEventListener('click', carregarEmpreses);
     }
 }
 
-// Event listeners per als canvis als selectors
-empresaSelector.addEventListener('change', comprovarSeleccions);
-diagnosiSelector.addEventListener('change', comprovarSeleccions);
+/**
+ * Mostra les empreses com a fitxes
+ * @param {Array} empreses - Array d'empreses a mostrar
+ */
+function mostrarEmpreses(empreses) {
+    const contenidor = document.getElementById('contenidorEmpreses');
 
-// Event listener per al botó d'iniciar diagnosi
-botoDiagnosi.addEventListener('click', () => {
-    if (!botoDiagnosi.disabled) {
-        // Obre l'enllaç de l'enquesta en una nova pestanya
-        window.open(URL_ENQUESTA, '_blank');
+    if (empreses.length === 0) {
+        contenidor.innerHTML = `
+            <div class="missatge-no-empreses">
+                <p>No s'han trobat empreses amb aquests filtres</p>
+            </div>
+        `;
+        return;
     }
-});
 
-// Comprova les seleccions inicial al carregar la pàgina
-comprovarSeleccions();
+    contenidor.innerHTML = '';
+
+    empreses.forEach(empresa => {
+        const fitxa = crearFitxaEmpresa(empresa);
+        contenidor.appendChild(fitxa);
+    });
+}
+
+/**
+ * Crea una fitxa HTML per a una empresa
+ * @param {Object} empresa - Objecte amb les dades de l'empresa
+ * @returns {HTMLElement} Element div amb la fitxa de l'empresa
+ */
+function crearFitxaEmpresa(empresa) {
+    const fitxa = document.createElement('div');
+    fitxa.className = 'fitxa-empresa';
+
+    // Badge d'estat
+    const estatClass = empresa.estat === 'activa' ? 'badge-activa' : 'badge-inactiva';
+    const estatText = empresa.estat === 'activa' ? 'Activa' : 'Inactiva';
+
+    // Badge de digitalització
+    let digitalBadge = '';
+    if (empresa.digitalitzacio.estat === 'finalitzada') {
+        digitalBadge = '<span class="badge-digital-finalitzada">✓ Digital</span>';
+    } else if (empresa.digitalitzacio.estat === 'en_progres') {
+        digitalBadge = '<span class="badge-digital-progres">⏳ En progrés</span>';
+    }
+
+    fitxa.innerHTML = `
+        <div class="fitxa-header">
+            <h3 class="fitxa-nom">${empresa.nom}</h3>
+            <span class="badge-estat-empresa ${estatClass}">${estatText}</span>
+        </div>
+        <p class="fitxa-info">
+            <strong>Municipi:</strong> ${empresa.municipi}
+        </p>
+        <p class="fitxa-info">
+            <strong>Sector:</strong> ${empresa.sector}
+        </p>
+        <div class="fitxa-badges">
+            ${digitalBadge}
+            ${empresa.sostenibilitat.estat === 'finalitzada' ?
+                `<span class="badge-sostenible">✓ Sostenible</span>` : ''}
+        </div>
+        <hr class="fitxa-divider">
+        <div class="fitxa-botons">
+            <button class="btn-fitxa-enquesta" data-empresa-id="${empresa.id}">
+                Fer enquesta
+            </button>
+            <button class="btn-fitxa-detalls" data-empresa-id="${empresa.id}">
+                Veure respostes
+            </button>
+        </div>
+    `;
+
+    // Efecte hover
+    fitxa.addEventListener('mouseenter', () => {
+        fitxa.classList.add('fitxa-hover');
+    });
+
+    fitxa.addEventListener('mouseleave', () => {
+        fitxa.classList.remove('fitxa-hover');
+    });
+
+    // Event listeners per als botons
+    fitxa.querySelector('.btn-fitxa-enquesta').addEventListener('click', (e) => {
+        e.stopPropagation();
+        ferEnquesta(empresa);
+    });
+
+    fitxa.querySelector('.btn-fitxa-detalls').addEventListener('click', (e) => {
+        e.stopPropagation();
+        veureDetalls(empresa);
+    });
+
+    return fitxa;
+}
+
+/**
+ * Obre l'enquesta per a una empresa
+ */
+function ferEnquesta(empresa) {
+    console.log('Iniciant enquesta per:', empresa.nom);
+    window.open(URL_ENQUESTA, '_blank');
+}
+
+/**
+ * Mostra els detalls d'una empresa (redirigeix a la pàgina de detall)
+ */
+function veureDetalls(empresa) {
+    window.location.href = `detall-empresa.html?id=${empresa.id}`;
+}
+
+/**
+ * Aplica els filtres seleccionats
+ */
+function aplicarFiltres() {
+    const cercaNom = document.getElementById('cercaNom').value.toLowerCase();
+    const filtreSector = document.getElementById('filtreSector').value;
+    const filtreEstat = document.getElementById('filtreEstat').value;
+    const filtreDigital = document.getElementById('filtreDigital').value;
+    const filtreSostenibilitat = document.getElementById('filtreSostenibilitat').value;
+    const ordenarPer = document.getElementById('ordenarPer').value;
+
+    // Filtra les empreses
+    let empresesFiltrades = totesLesEmpreses.filter(empresa => {
+        // Filtre de cerca
+        if (cercaNom && !empresa.nom.toLowerCase().includes(cercaNom) && !empresa.municipi.toLowerCase().includes(cercaNom)) {
+            return false;
+        }
+
+        // Filtre de sector
+        if (filtreSector && empresa.sector !== filtreSector) {
+            return false;
+        }
+
+        // Filtre d'estat
+        if (filtreEstat && empresa.estat !== filtreEstat) {
+            return false;
+        }
+
+        // Filtre de digitalització
+        if (filtreDigital && empresa.digitalitzacio.estat !== filtreDigital) {
+            return false;
+        }
+
+        // Filtre de sostenibilitat
+        if (filtreSostenibilitat && empresa.sostenibilitat.estat !== filtreSostenibilitat) {
+            return false;
+        }
+
+        return true;
+    });
+
+    // Ordena les empreses
+    empresesFiltrades.sort((a, b) => {
+        if (ordenarPer === 'nom') {
+            return a.nom.localeCompare(b.nom);
+        } else if (ordenarPer === 'municipi') {
+            return a.municipi.localeCompare(b.municipi);
+        } else if (ordenarPer === 'sector') {
+            return a.sector.localeCompare(b.sector);
+        }
+        return 0;
+    });
+
+    mostrarEmpreses(empresesFiltrades);
+}
+
+// Event listeners per als filtres
+document.getElementById('aplicarFiltres').addEventListener('click', aplicarFiltres);
+
+// Aplicar filtres en temps real quan es canvia algun filtre
+document.getElementById('cercaNom').addEventListener('input', aplicarFiltres);
+document.getElementById('filtreSector').addEventListener('change', aplicarFiltres);
+document.getElementById('filtreEstat').addEventListener('change', aplicarFiltres);
+document.getElementById('filtreDigital').addEventListener('change', aplicarFiltres);
+document.getElementById('filtreSostenibilitat').addEventListener('change', aplicarFiltres);
+document.getElementById('ordenarPer').addEventListener('change', aplicarFiltres);
 
 // ============================================
 // INICIALITZACIÓ
@@ -246,4 +417,6 @@ comprovarSeleccions();
 
 // Configuració inicial del botó del header (quan es carrega la pàgina, estem al login)
 btnHeader.textContent = 'MONTSIÀ30';
-btnHeader.onclick = () => window.location.href = '../pagina_inici/OPT.html';
+btnHeader.addEventListener('click', tornarAInici);
+
+// Les empreses es carregaran automàticament quan l'usuari accedeixi a la vista Main
