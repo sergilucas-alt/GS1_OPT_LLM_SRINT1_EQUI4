@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ca">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Intranet Montsià 30</title>
+	<!-- Fonts de Google -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+		rel="stylesheet">
+	<!-- Enllaç al fitxer CSS extern -->
+	<link rel="stylesheet" href="intranet.css">
+</head>
+
+<body>
+	<!-- ============================================ -->
+	<!-- HEADER: Capçalera amb logo i botó de navegació -->
+	<!-- ============================================ -->
+	<header class="barradalt">
+		<div class="barradalt">
+			<img src="LOGO.png" alt="Logo montsià30" style="width: 100px; height: auto;">
+			<!-- El text d'aquest botó canvia segons la vista activa -->
+			<button class="boton-h1" id="btnHeader">MONTSIÀ30</button>
+		</div>
+	</header>
+
+	<!-- ============================================ -->
+	<!-- VISTA 1: LOGIN -->
+	<!-- Formulari per accedir a la intranet -->
+	<!-- ============================================ -->
+	<main id="vistaLogin" class="vista activa"
+		style="flex-direction: column; justify-content: center; align-items: center; padding: 50px;">
+		<h2>🔐 Accés a la Intranet</h2>
+
+		<!-- Formulari de login -->
+		<form id="loginForm"
+			style="width: 350px; background-color: #dce8f7; padding: 25px; border-radius: 8px; border: 1px solid #1f85de;">
+
+			<!-- Camp de correu electrònic -->
+			<div style="margin-bottom: 15px;">
+				<label for="usuariLogin">Correu Electrònic:</label>
+				<input type="email" id="usuariLogin" name="usuari" required placeholder="El teu correu..."
+					style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+			</div>
+
+			<!-- Camp de contrasenya -->
+			<div style="margin-bottom: 15px;">
+				<label for="contrasenyaLogin">Contrasenya:</label>
+				<input type="password" id="contrasenyaLogin" name="contrasenya" required
+					placeholder="La teva contrasenya..."
+					style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+			</div>
+
+			<!-- Botó per enviar el formulari -->
+			<button type="submit"
+				style="background-color: #1f85de; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px;">
+				Accedeix
+			</button>
+
+			<!-- Enllaç per anar a la pàgina de registre -->
+			<p style="text-align: center; margin-top: 20px;">
+				Encara no tens compte? <a href="#" id="linkRegistre" style="color: #1f85de;">Registra't aquí</a>
+			</p>
+		</form>
+	</main>
+
+	<!-- ============================================ -->
+	<!-- VISTA 2: REGISTRE -->
+	<!-- Formulari per crear un nou compte d'usuari -->
+	<!-- ============================================ -->
+	<main id="vistaRegistre" class="vista"
+		style="flex-direction: column; justify-content: center; align-items: center; padding: 50px;">
+		<h2>📝 Registre d'Usuari</h2>
+
+		<!-- Formulari de registre -->
+		<form id="registreForm"
+			style="width: 350px; background-color: #dce8f7; padding: 25px; border-radius: 8px; border: 1px solid #1f85de;">
+
+			<!-- Camp de correu electrònic amb validació -->
+			<div style="margin-bottom: 15px;">
+				<label for="usuariRegistre">Correu Electrònic (usuari):</label>
+				<input type="email" id="usuariRegistre" name="usuari" required placeholder="exemple@montsia30.net"
+					style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+				<!-- Missatge d'error per al correu -->
+				<small id="usuariError" style="color: red;"></small>
+				<small style="display: block; margin-top: 5px; font-size: 0.85rem; color: #718096;">
+					* Ha de ser del domini @montsia30.net
+				</small>
+			</div>
+
+			<!-- Camp de contrasenya amb validació -->
+			<div style="margin-bottom: 15px;">
+				<label for="contrasenyaRegistre">Contrasenya:</label>
+				<input type="password" id="contrasenyaRegistre" name="contrasenya" required
+					style="width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box;">
+				<!-- Missatge d'error per a la contrasenya -->
+				<small id="passError" style="color: red;"></small>
+				<!-- Requisits de la contrasenya -->
+				<div style="margin-top: 8px; font-size: 0.85rem; color: #718096;">
+					<p style="margin: 3px 0;">✓ Mínim 8 caràcters</p>
+					<p style="margin: 3px 0;">✓ Almenys una majúscula i una minúscula</p>
+					<p style="margin: 3px 0;">✓ Almenys un caràcter especial</p>
+				</div>
+			</div>
+
+			<!-- Botó per enviar el formulari de registre -->
+			<button type="submit"
+				style="background-color: #1f85de; color: white; padding: 10px 15px; border: none; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 10px;">
+				Registra't
+			</button>
+
+			<!-- Enllaç per tornar al login -->
+			<p style="text-align: center; margin-top: 20px;">
+				Ja tens compte? <a href="#" id="linkLogin" style="color: #1f85de;">Accedeix aquí</a>
+			</p>
+		</form>
+	</main>
+
+	<!-- ============================================ -->
+	<!-- VISTA 3: MAIN (Selecció d'Empresa i Diagnosi) -->
+	<!-- Pàgina principal de la intranet -->
+	<!-- ============================================ -->
+	<main id="vistaMain" class="vista" style="flex-direction: column; align-items: center; padding: 50px;">
+		<h2>🏭 Selecció d'Empresa i Diagnosi</h2>
+
+		<!-- Contenidor del formulari de selecció -->
+		<div
+			style="width: 600px; padding: 20px; background-color: #f7f7f7; border-radius: 8px; border: 1px solid #ccc;">
+
+			<!-- Selector d'empresa -->
+			<label for="empresa" style="font-weight: bold; display: block; margin-bottom: 10px;">
+				1. Tria l'Empresa:
+			</label>
+			<select id="empresa" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #1f85de;">
+				<option value="" disabled selected>--- Selecciona una empresa del llistat ---</option>
+				<option value="EmpresaA">Empresa Comercial (Montsià)</option>
+				<option value="EmpresaB">Empresa Industrial (Ebre)</option>
+				<option value="EmpresaC">Empresa de Serveis (Delta)</option>
+			</select>
+
+			<!-- Selector de tipus de diagnosi -->
+			<label for="diagnosi" style="font-weight: bold; display: block; margin-bottom: 10px;">
+				2. Tria el Formulari de Diagnosi:
+			</label>
+			<select id="diagnosi" style="width: 100%; padding: 10px; margin-bottom: 30px; border: 1px solid #1f85de;">
+				<option value="" disabled selected>--- Selecciona el tipus d'autodiagnosi ---</option>
+				<option value="comercial">Autodiagnosi Sector Comercial</option>
+				<option value="altres" disabled>Autodiagnosi Sector Industrial (Propera versió)</option>
+				<option value="altres" disabled>Autodiagnosi Sector Serveis (Propera versió)</option>
+			</select>
+
+			<!-- Botó per iniciar la diagnosi (s'activa només amb seleccions vàlides) -->
+			<button id="iniciaDiagnosi" disabled
+				style="background-color: #555; color: white; padding: 12px 20px; border: none; border-radius: 5px; cursor: not-allowed; width: 100%; font-size: 1.1rem;">
+				Inicia l'Autodiagnosi
+			</button>
+
+			<!-- Missatge d'error o informació -->
+			<small style="display: block; text-align: center; margin-top: 10px; color: red;" id="missatgeError"></small>
+		</div>
+	</main>
+
+	<!-- ============================================ -->
+	<!-- FOOTER: Peu de pàgina amb informació de contacte -->
+	<!-- ============================================ -->
+	<footer>
+		<div class="barrabaix">
+			<p>Correu: atencioclient@montsià30.org</p>
+			<p>Telèfon: 647 72 39 47</p>
+		</div>
+	</footer>
+
+	<!-- Enllaç al fitxer JavaScript extern -->
+	<script src="intranet.js"></script>
+</body>
+
+</html>
