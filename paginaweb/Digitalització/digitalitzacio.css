@@ -171,6 +171,53 @@ header {
 }
 
 /* ============================================ */
+/* BREADCRUMBS (RUTA DE NAVEGACIÓ) */
+/* ============================================ */
+
+.breadcrumbs {
+	background-color: #f5f8fc;
+	padding: 15px 30px;
+	border-bottom: 1px solid #dce8f7;
+	font-family: 'Poppins', sans-serif;
+	position: fixed;
+	top: 70px;
+	left: 0;
+	right: 0;
+	z-index: 90;
+}
+
+.breadcrumbs-container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	font-size: 0.9rem;
+}
+
+.breadcrumb-item {
+	color: #4a5568;
+	text-decoration: none;
+	transition: color 0.2s ease;
+	font-weight: 500;
+}
+
+.breadcrumb-item:hover {
+	color: #1F85DE;
+}
+
+.breadcrumb-item.active {
+	color: #1F85DE;
+	font-weight: 600;
+	pointer-events: none;
+}
+
+.breadcrumb-separator {
+	color: #a0aec0;
+	font-weight: 400;
+	user-select: none;
+}
+
+/* ============================================ */
 /* PEU DE PÀGINA (FOOTER) */
 /* ============================================ */
 
@@ -204,7 +251,7 @@ footer {
 	height: 100%;
 	position: relative;
 	overflow: hidden;
-	margin-top: 70px; /* Espai per al header fix */
+	margin-top: 125px; /* Espai per al header fix + breadcrumbs */
 	margin-bottom: 60px; /* Espai per al footer fix */
 }
 
@@ -737,5 +784,19 @@ footer {
 
 	.boton-h1 {
 		font-size: 1.5rem;
+	}
+
+	.breadcrumbs {
+		padding: 10px 15px;
+		top: 60px;
+	}
+
+	.breadcrumbs-container {
+		font-size: 0.85rem;
+		gap: 6px;
+	}
+
+	.carousel {
+		margin-top: 110px;
 	}
 }

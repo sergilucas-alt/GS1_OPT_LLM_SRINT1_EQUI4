@@ -182,6 +182,48 @@ h1 {
 }
 
 /* ============================================ */
+/* BREADCRUMBS (RUTA DE NAVEGACIÓ) */
+/* ============================================ */
+
+.breadcrumbs {
+	background-color: #f5f8fc;
+	padding: 15px 30px;
+	border-bottom: 1px solid #dce8f7;
+	font-family: 'Poppins', sans-serif;
+}
+
+.breadcrumbs-container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	font-size: 0.9rem;
+}
+
+.breadcrumb-item {
+	color: #4a5568;
+	text-decoration: none;
+	transition: color 0.2s ease;
+	font-weight: 500;
+}
+
+.breadcrumb-item:hover {
+	color: #1F85DE;
+}
+
+.breadcrumb-item.active {
+	color: #1F85DE;
+	font-weight: 600;
+	pointer-events: none;
+}
+
+.breadcrumb-separator {
+	color: #a0aec0;
+	font-weight: 400;
+	user-select: none;
+}
+
+/* ============================================ */
 /* ÀREA PRINCIPAL (MAIN) */
 /* ============================================ */
 
@@ -231,7 +273,7 @@ main > button:hover {
 /* Botons específics amb imatge de fons */
 
 .btn-soste {
-	background-image: url('soste.png');
+	background-image: url('images/soste.png');
 	position: relative;
 	background-size: cover;
 	background-position: center;
@@ -242,7 +284,7 @@ main > button:hover {
 }
 
 .btn-digi {
-	background-image: url('digi.png');
+	background-image: url('images/digi.png');
 	position: relative;
 	background-size: cover;
 	background-position: center;
@@ -253,7 +295,7 @@ main > button:hover {
 }
 
 .btn-intranet {
-	background-image: url('intra.png');
+	background-image: url('images/intra.png');
 	position: relative;
 	background-size: cover;
 	background-position: center;
@@ -391,5 +433,14 @@ footer {
 	.barradalt,
 	.barrabaix {
 		padding: 10px 15px;
+	}
+
+	.breadcrumbs {
+		padding: 10px 15px;
+	}
+
+	.breadcrumbs-container {
+		font-size: 0.85rem;
+		gap: 6px;
 	}
 }

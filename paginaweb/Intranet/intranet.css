@@ -191,6 +191,48 @@ h1 {
 }
 
 /* ============================================ */
+/* BREADCRUMBS (RUTA DE NAVEGACIÓ) */
+/* ============================================ */
+
+.breadcrumbs {
+	background-color: #f5f8fc;
+	padding: 15px 30px;
+	border-bottom: 1px solid #dce8f7;
+	font-family: 'Poppins', sans-serif;
+}
+
+.breadcrumbs-container {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+	font-size: 0.9rem;
+}
+
+.breadcrumb-item {
+	color: #4a5568;
+	text-decoration: none;
+	transition: color 0.2s ease;
+	font-weight: 500;
+}
+
+.breadcrumb-item:hover {
+	color: #1F85DE;
+}
+
+.breadcrumb-item.active {
+	color: #1F85DE;
+	font-weight: 600;
+	pointer-events: none;
+}
+
+.breadcrumb-separator {
+	color: #a0aec0;
+	font-weight: 400;
+	user-select: none;
+}
+
+/* ============================================ */
 /* ÀREA PRINCIPAL (MAIN) */
 /* ============================================ */
 
@@ -481,6 +523,21 @@ select:hover {
 	}
 }
 
+@media (max-width: 1024px) {
+	.detall-empresa {
+		grid-template-columns: 1fr;
+	}
+
+	.detall-empresa>.card-empresa:first-child {
+		grid-row: auto;
+	}
+
+	.detall-empresa>.card-empresa:nth-child(2),
+	.detall-empresa>.card-empresa:nth-child(3) {
+		min-height: auto;
+	}
+}
+
 @media (max-width: 768px) {
 
 	form,
@@ -505,6 +562,7 @@ select:hover {
 
 	.detall-empresa {
 		padding: 15px;
+		gap: 20px;
 	}
 
 	.card-empresa {
@@ -520,18 +578,26 @@ select:hover {
 		flex: none;
 	}
 
-	.botons-accions {
-		flex-direction: column;
-	}
-
-	.btn-accio {
-		width: 100%;
-		min-width: auto;
-	}
-
 	.empresa-header {
 		flex-direction: column;
 		align-items: flex-start;
+	}
+
+	.breadcrumbs {
+		padding: 10px 15px;
+	}
+
+	.breadcrumbs-container {
+		font-size: 0.85rem;
+		gap: 6px;
+	}
+
+	.empresa-nom {
+		font-size: 1.5rem !important;
+	}
+
+	.detall-empresa>.card-empresa:first-child .empresa-nom {
+		font-size: 1.8rem !important;
 	}
 }
 
@@ -542,16 +608,32 @@ select:hover {
 .detall-empresa {
 	max-width: 1200px;
 	margin: 0 auto;
-	padding: 30px;
+	padding: 20px;
+	padding-bottom: 100px;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+	align-items: start;
+}
+
+/* La primera card (informació) ocupa tota l'alçada de l'esquerra */
+.detall-empresa>.card-empresa:first-child {
+	grid-row: 1 / 3;
+}
+
+/* Les altres dues cards (digitalització i sostenibilitat) es col·loquen a la dreta */
+.detall-empresa>.card-empresa:nth-child(2),
+.detall-empresa>.card-empresa:nth-child(3) {
+	min-height: 300px;
 	display: flex;
 	flex-direction: column;
-	gap: 30px;
+	justify-content: space-between;
 }
 
 .card-empresa {
 	background: white;
-	border-radius: 16px;
-	padding: 30px;
+	border-radius: 12px;
+	padding: 24px;
 	box-shadow: 0 8px 30px rgba(31, 133, 222, 0.12);
 	border: 2px solid #dce8f7;
 	transition: all 0.3s ease;
@@ -583,7 +665,7 @@ select:hover {
 
 .info-row {
 	display: flex;
-	padding: 15px 0;
+	padding: 10px 0;
 	border-bottom: 1px solid #e2e8f0;
 }
 
@@ -592,7 +674,7 @@ select:hover {
 }
 
 .info-label {
-	flex: 0 0 200px;
+	flex: 0 0 150px;
 	font-weight: 600;
 	color: #2d3748;
 	font-family: 'Poppins', sans-serif;
@@ -605,17 +687,20 @@ select:hover {
 
 .section-title {
 	color: #1F85DE;
-	font-size: 1.5rem;
+	font-size: 1.35rem;
 	font-weight: 700;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
+	margin-top: 0;
 	font-family: 'Poppins', sans-serif;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #e2e8f0;
 }
 
 .progress-bar {
 	width: 100%;
-	height: 30px;
+	height: 26px;
 	background: #e2e8f0;
-	border-radius: 15px;
+	border-radius: 13px;
 	overflow: hidden;
 	position: relative;
 }
@@ -628,21 +713,20 @@ select:hover {
 	justify-content: center;
 	color: white;
 	font-weight: 600;
-	font-size: 0.9rem;
+	font-size: 0.85rem;
 	transition: width 1s ease;
 }
 
 .btn-accio {
-	padding: 12px 24px;
-	border-radius: 10px;
+	padding: 10px 20px;
+	border-radius: 8px;
 	font-weight: 600;
 	font-family: 'Poppins', sans-serif;
 	cursor: pointer;
 	transition: all 0.3s ease;
 	border: none;
 	font-size: 1rem;
-	flex: 1;
-	min-width: 180px;
+	width: 100%;
 }
 
 .btn-primary {
@@ -674,16 +758,16 @@ select:hover {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 	flex-wrap: wrap;
-	gap: 15px;
+	gap: 12px;
 }
 
 .empresa-header-content {
 	flex: 1;
 	display: flex;
 	align-items: center;
-	gap: 15px;
+	gap: 12px;
 	flex-wrap: wrap;
 }
 
@@ -691,6 +775,12 @@ select:hover {
 	margin: 0;
 	color: #1F85DE;
 	font-family: 'Poppins', sans-serif;
+	font-size: 2rem;
+}
+
+/* Títol de la primera card més gran */
+.detall-empresa>.card-empresa:first-child .empresa-nom {
+	font-size: 2rem;
 }
 
 .badge-estat {
@@ -702,13 +792,13 @@ select:hover {
 }
 
 .progress-section {
-	margin-top: 20px;
-	padding-top: 15px;
+	margin-top: 15px;
+	padding-top: 12px;
 	border-top: 1px solid #e2e8f0;
 }
 
 .progress-label {
-	margin-bottom: 10px;
+	margin-bottom: 8px;
 	font-weight: 600;
 	color: #2d3748;
 	font-family: 'Poppins', sans-serif;
@@ -719,10 +809,11 @@ select:hover {
 }
 
 .botons-accions {
-	margin-top: 30px;
+	margin-top: auto;
+	padding-top: 15px;
 	display: flex;
-	gap: 15px;
-	flex-wrap: wrap;
+	flex-direction: column;
+	gap: 10px;
 }
 
 .resultat-row {

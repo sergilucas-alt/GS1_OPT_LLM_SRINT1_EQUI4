@@ -18,6 +18,27 @@ let index = 0;
 const slides = document.querySelectorAll('.slide');
 
 /**
+ * Noms dels slides per als breadcrumbs
+ */
+const slideNames = [
+	'Missatgeria Instantània',
+	'Presentació Web',
+	'Gestió Documental',
+	'Vendes Online'
+];
+
+/**
+ * Actualitza el breadcrumb amb el nom del slide actual
+ * @param {number} slideIndex - Índex del slide actual
+ */
+function actualitzarBreadcrumb(slideIndex) {
+	const breadcrumbSlide = document.getElementById('breadcrumbSlide');
+	if (breadcrumbSlide && slideNames[slideIndex]) {
+		breadcrumbSlide.textContent = slideNames[slideIndex];
+	}
+}
+
+/**
  * Mostra la diapositiva especificada per l'índex
  * @param {number} i - Índex de la diapositiva a mostrar
  */
@@ -26,6 +47,7 @@ function showSlide(i) {
 		slide.classList.toggle('active', idx === i);
 	});
 	index = i; // Actualitza l'índex global
+	actualitzarBreadcrumb(i); // Actualitza el breadcrumb
 }
 
 /**
