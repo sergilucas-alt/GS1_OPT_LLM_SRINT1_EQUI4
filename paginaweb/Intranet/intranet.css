@@ -23,15 +23,14 @@ body {
 /* CAPÇALERA (HEADER) */
 /* ============================================ */
 
-/* Header fix a dalt */
 header {
-	position: sticky;
+	position: fixed;
 	top: 0;
+	left: 0;
+	width: 100%;
 	z-index: 100;
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-
-/* Contenidor principal de la capçalera */
 
 .barradalt {
 	display: flex;
@@ -49,26 +48,13 @@ header {
 	gap: 30px;
 }
 
-/* Logo a la capçalera */
-
 .barradalt img {
 	width: 100px;
 	height: auto;
 }
 
-/* Estil per als títols h1 */
-
-h1 {
-	font-weight: 800;
-	font-family: 'Poppins', sans-serif;
-	margin: 0;
-}
-
-/* Botó de la capçalera (Tornar a Inici / Tanca Sessió) */
-
 .boton-h1 {
 	all: unset;
-	/* Reset de tots els estils per defecte */
 	font-size: 2.2rem;
 	font-weight: 800;
 	line-height: 1.2;
@@ -233,6 +219,42 @@ h1 {
 }
 
 /* ============================================ */
+/* PEU DE PÀGINA (FOOTER) */
+/* ============================================ */
+
+footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	z-index: 100;
+	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.barrabaix {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 30px;
+	background-color: #dce8f7;
+	color: #1F85DE;
+	padding: 15px 20px;
+	box-sizing: border-box;
+	border-top: 2px solid #1F85DE;
+}
+
+/* ============================================ */
+/* ESTILS ESPECÍFICS D'INTRANET */
+/* ============================================ */
+
+/* Títols h1 específics d'Intranet */
+h1 {
+	font-weight: 800;
+	font-family: 'Poppins', sans-serif;
+	margin: 0;
+}
+
+/* ============================================ */
 /* ÀREA PRINCIPAL (MAIN) */
 /* ============================================ */
 
@@ -266,33 +288,6 @@ main {
 	display: flex;
 }
 
-/* ============================================ */
-/* PEU DE PÀGINA (FOOTER) */
-/* ============================================ */
-
-/* Contenidor del footer */
-
-footer {
-	position: fixed;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: 100%;
-	z-index: 90;
-	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.barrabaix {
-	display: flex;
-	align-items: center;
-	justify-content: space-between;
-	gap: 30px;
-	background-color: #dce8f7;
-	color: #1F85DE;
-	padding: 15px 20px;
-	box-sizing: border-box;
-	border-top: 2px solid #1F85DE;
-}
 
 /* ============================================ */
 /* ESTILS PER ALS FORMULARIS */
@@ -550,16 +545,6 @@ select:hover {
 		font-size: 1.5rem;
 	}
 
-	.boton-h1 {
-		font-size: 0.9rem;
-		padding: 8px 15px;
-	}
-
-	.barradalt,
-	.barrabaix {
-		padding: 10px 15px;
-	}
-
 	.detall-empresa {
 		padding: 15px;
 		gap: 20px;
@@ -583,6 +568,23 @@ select:hover {
 		align-items: flex-start;
 	}
 
+	.empresa-nom {
+		font-size: 1.5rem !important;
+	}
+
+	.detall-empresa>.card-empresa:first-child .empresa-nom {
+		font-size: 1.8rem !important;
+	}
+
+	.boton-h1 {
+		font-size: 1.5rem;
+	}
+
+	.barradalt,
+	.barrabaix {
+		padding: 10px 15px;
+	}
+
 	.breadcrumbs {
 		padding: 10px 15px;
 	}
@@ -590,14 +592,6 @@ select:hover {
 	.breadcrumbs-container {
 		font-size: 0.85rem;
 		gap: 6px;
-	}
-
-	.empresa-nom {
-		font-size: 1.5rem !important;
-	}
-
-	.detall-empresa>.card-empresa:first-child .empresa-nom {
-		font-size: 1.8rem !important;
 	}
 }
 
@@ -747,11 +741,6 @@ select:hover {
 
 .btn-secondary:hover {
 	background: #f5f8fc;
-}
-
-.logo-header {
-	width: 100px;
-	height: auto;
 }
 
 .empresa-header {
