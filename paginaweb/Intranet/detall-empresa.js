@@ -25,10 +25,53 @@ function tornarAlLlistat() {
 }
 
 // ============================================
+// MENÚ DE NAVEGACIÓ
+// ============================================
+
+/**
+ * Gestiona el menú hamburguesa en mòbil
+ */
+function inicialitzarMenu() {
+	const menuToggle = document.getElementById('menuToggle');
+	const navbar = document.getElementById('navbar');
+
+	if (menuToggle && navbar) {
+		menuToggle.addEventListener('click', () => {
+			navbar.classList.toggle('active');
+		});
+	}
+
+	// Gestionar dropdowns en mòbil
+	const dropdowns = document.querySelectorAll('.dropdown');
+	dropdowns.forEach(dropdown => {
+		const toggle = dropdown.querySelector('.dropdown-toggle');
+		if (toggle) {
+			toggle.addEventListener('click', (e) => {
+				// En mòbil, alternar el dropdown
+				if (window.innerWidth <= 968) {
+					e.stopPropagation();
+					dropdown.classList.toggle('active');
+				}
+			});
+		}
+	});
+
+	// Tancar el menú en clicar fora
+	document.addEventListener('click', (e) => {
+		if (!e.target.closest('.barradalt')) {
+			navbar.classList.remove('active');
+		}
+	});
+}
+
+// ============================================
 // INICIALITZACIÓ - Event listeners per als botons
 // ============================================
 
 document.addEventListener('DOMContentLoaded', () => {
+	// Inicialitza el menú
+	inicialitzarMenu();
+
 	// Botó tornar al llistat
 	const btnTornar = document.getElementById('btnTornar');
 	if (btnTornar) {

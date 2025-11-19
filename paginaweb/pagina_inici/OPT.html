@@ -15,8 +15,34 @@
 	<!-- HEADER -->
 	<header>
 		<div class="barradalt">
-			<img src="LOGO.png" alt="Logo montsià30">
-			<button class="boton-h1" id="btnIniciHeader">MONTSIÀ30</button>
+			<div class="header-left">
+				<img src="LOGO.png" alt="Logo montsià30">
+				<button class="boton-h1" id="btnIniciHeader">MONTSIÀ30</button>
+			</div>
+
+			<!-- Menú de navegació -->
+			<nav class="navbar" id="navbar">
+				<div class="nav-item">
+					<a href="OPT.html" class="nav-link active">Inici</a>
+				</div>
+
+				<div class="nav-item dropdown">
+					<span class="nav-link dropdown-toggle">Digitalització</span>
+					<div class="dropdown-menu">
+						<a href="../Digitalització/digitalitzacio.html#slide-0" class="dropdown-item">Missatgeria Instantània</a>
+						<a href="../Digitalització/digitalitzacio.html#slide-1" class="dropdown-item">Presentació Web</a>
+						<a href="../Digitalització/digitalitzacio.html#slide-2" class="dropdown-item">Gestió Documental</a>
+						<a href="../Digitalització/digitalitzacio.html#slide-3" class="dropdown-item">Vendes Online</a>
+					</div>
+				</div>
+
+				<div class="nav-item">
+					<a href="../Intranet/intranet.html" class="nav-link">Intranet</a>
+				</div>
+			</nav>
+
+			<!-- Botó hamburguesa per mòbil -->
+			<button class="menu-toggle" id="menuToggle">☰</button>
 		</div>
 	</header>
 

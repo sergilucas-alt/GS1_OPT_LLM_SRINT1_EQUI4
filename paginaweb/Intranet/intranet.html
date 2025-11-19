@@ -18,11 +18,40 @@
 	<!-- ============================================ -->
 	<!-- HEADER: Capçalera amb logo i botó de navegació -->
 	<!-- ============================================ -->
-	<header class="barradalt">
+	<header>
 		<div class="barradalt">
-			<img src="LOGO.png" alt="Logo montsià30" class="logo-header">
-			<!-- El text d'aquest botó canvia segons la vista activa -->
-			<button class="boton-h1" id="btnHeader">MONTSIÀ30</button>
+			<div class="header-left">
+				<img src="LOGO.png" alt="Logo montsià30" class="logo-header">
+				<!-- El text d'aquest botó canvia segons la vista activa -->
+				<button class="boton-h1" id="btnHeader">MONTSIÀ30</button>
+			</div>
+
+			<!-- Menú de navegació -->
+			<nav class="navbar" id="navbar">
+				<div class="nav-item">
+					<a href="../pagina_inici/OPT.html" class="nav-link">Inici</a>
+				</div>
+
+				<div class="nav-item dropdown">
+					<span class="nav-link dropdown-toggle">Digitalització</span>
+					<div class="dropdown-menu">
+						<a href="../Digitalització/digitalitzacio.html#slide-0" class="dropdown-item">Missatgeria
+							Instantània</a>
+						<a href="../Digitalització/digitalitzacio.html#slide-1" class="dropdown-item">Presentació
+							Web</a>
+						<a href="../Digitalització/digitalitzacio.html#slide-2" class="dropdown-item">Gestió
+							Documental</a>
+						<a href="../Digitalització/digitalitzacio.html#slide-3" class="dropdown-item">Vendes Online</a>
+					</div>
+				</div>
+
+				<div class="nav-item">
+					<a href="intranet.html" class="nav-link active">Intranet</a>
+				</div>
+			</nav>
+
+			<!-- Botó hamburguesa per mòbil -->
+			<button class="menu-toggle" id="menuToggle">☰</button>
 		</div>
 	</header>
 
@@ -39,7 +68,8 @@
 			<!-- Camp de correu electrònic -->
 			<div class="form-group">
 				<label for="usuariLogin">Correu Electrònic:</label>
-				<input type="email" id="usuariLogin" name="usuari" required placeholder="El teu correu..." class="form-input">
+				<input type="email" id="usuariLogin" name="usuari" required placeholder="El teu correu..."
+					class="form-input">
 			</div>
 
 			<!-- Camp de contrasenya -->
@@ -86,8 +116,7 @@
 			<!-- Camp de contrasenya amb validació -->
 			<div class="form-group">
 				<label for="contrasenyaRegistre">Contrasenya:</label>
-				<input type="password" id="contrasenyaRegistre" name="contrasenya" required
-					class="form-input">
+				<input type="password" id="contrasenyaRegistre" name="contrasenya" required class="form-input">
 				<!-- Missatge d'error per a la contrasenya -->
 				<small id="passError" class="form-error"></small>
 				<!-- Requisits de la contrasenya -->

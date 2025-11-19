@@ -172,14 +172,14 @@ document.getElementById('registreForm').addEventListener('submit', (e) => {
     // Si no hi ha errors, procedeix amb el registre
     if (!errorUsuari && !errorPass) {
         // NOTA: En una aplicació real, aquí s'enviarien les dades al servidor
-        console.log("✅ Registre completat:", usuariInput.value);
+        console.log("Registre completat:", usuariInput.value);
 
         // Neteja els camps del formulari
         usuariInput.value = '';
         contrasenyaInput.value = '';
 
         // Mostra missatge d'èxit
-        alert("✅ Registre completat amb èxit!\n\nJa pots accedir amb el teu nou compte.");
+        alert("Registre completat amb èxit!\n\nJa pots accedir amb el teu nou compte.");
 
         // Canvia a la vista de login
         mostrarVista('login');
@@ -211,16 +211,16 @@ function carregarEmpreses() {
         // Obté les empreses del fitxer dades-empreses.js
         totesLesEmpreses = obtenirEmpreses();
 
-        console.log('✅ Empreses carregades correctament:', totesLesEmpreses.length);
+        console.log('Empreses carregades correctament:', totesLesEmpreses.length);
 
         // Mostra totes les empreses inicialment
         mostrarEmpreses(totesLesEmpreses);
     } catch (error) {
-        console.error('❌ Error carregant empreses:', error);
+        console.error('Error carregant empreses:', error);
         const contenidor = document.getElementById('contenidorEmpreses');
         contenidor.innerHTML = `
             <div class="missatge-error">
-                <p class="error-titol">❌ Error carregant les empreses</p>
+                <p class="error-titol"> Error carregant les empreses</p>
                 <p class="error-missatge">${error.message}</p>
                 <button class="btn-retry" id="btnRetry">
                     Tornar a intentar
@@ -420,3 +420,46 @@ btnHeader.textContent = 'MONTSIÀ30';
 btnHeader.addEventListener('click', tornarAInici);
 
 // Les empreses es carregaran automàticament quan l'usuari accedeixi a la vista Main
+
+// ============================================
+// MENÚ DE NAVEGACIÓ
+// ============================================
+
+/**
+ * Gestiona el menú hamburguesa en mòbil
+ */
+function inicialitzarMenu() {
+	const menuToggle = document.getElementById('menuToggle');
+	const navbar = document.getElementById('navbar');
+
+	if (menuToggle && navbar) {
+		menuToggle.addEventListener('click', () => {
+			navbar.classList.toggle('active');
+		});
+	}
+
+	// Gestionar dropdowns en mòbil
+	const dropdowns = document.querySelectorAll('.dropdown');
+	dropdowns.forEach(dropdown => {
+		const toggle = dropdown.querySelector('.dropdown-toggle');
+		if (toggle) {
+			toggle.addEventListener('click', (e) => {
+				// En mòbil, alternar el dropdown
+				if (window.innerWidth <= 968) {
+					e.stopPropagation();
+					dropdown.classList.toggle('active');
+				}
+			});
+		}
+	});
+
+	// Tancar el menú en clicar fora
+	document.addEventListener('click', (e) => {
+		if (!e.target.closest('.barradalt')) {
+			navbar.classList.remove('active');
+		}
+	});
+}
+
+// Inicialitza el menú
+inicialitzarMenu();
