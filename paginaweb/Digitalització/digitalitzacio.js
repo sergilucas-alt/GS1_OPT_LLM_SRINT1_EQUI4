@@ -66,4 +66,25 @@ document.addEventListener('DOMContentLoaded', () => {
 			showSlide(index);
 		}
 	});
+
+	// Ajustar variables CSS per al header/footer (mida real) al carregar
+	if (typeof setCarouselOffsets === 'function') setCarouselOffsets();
 });
+
+/**
+ * Mesura l'altura del header i footer i actualitza les variables CSS
+ * Això evita que el carrusel quedi per darrere del footer i assegura
+ * que la seva alçada coincideixi amb l'espai real disponible.
+ */
+function setCarouselOffsets() {
+  const header = document.querySelector('header');
+  const footer = document.querySelector('footer');
+  const root = document.documentElement;
+  const h = header ? Math.ceil(header.getBoundingClientRect().height) : 70;
+  const f = footer ? Math.ceil(footer.getBoundingClientRect().height) : 60;
+  root.style.setProperty('--header-height', `${h}px`);
+  root.style.setProperty('--footer-height', `${f}px`);
+}
+
+// Recalcula al redimensionar la finestra
+window.addEventListener('resize', setCarouselOffsets);

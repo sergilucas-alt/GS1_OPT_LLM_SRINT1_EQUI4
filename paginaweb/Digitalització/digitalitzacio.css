@@ -13,6 +13,13 @@ html, body {
 	background-color: #fafafa;
 }
 
+/* Variables per a calcular l'altura del carrusel (header + footer) */
+:root {
+    --header-height: 70px; /* ajustar si el header canvia d'alçada */
+    --footer-height: 60px; /* ajustar si el footer canvia d'alçada */
+	--header-gap: 12px; /* espai entre header i contingut (petit marge) */
+}
+
 /* ============================================ */
 /* CAPÇALERA (HEADER) */
 /* ============================================ */
@@ -22,7 +29,7 @@ header {
 	top: 0;
 	left: 0;
 	width: 100%;
-	z-index: 100;
+	z-index: 110; /* aseguramos que esté por encima del carrusel */
 	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -65,7 +72,7 @@ footer {
 	bottom: 0;
 	left: 0;
 	width: 100%;
-	z-index: 100;
+	z-index: 120; /* footer siempre encima del carrusel */
 	box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -87,11 +94,13 @@ footer {
 
 .carousel {
 	width: 100%;
-	height: 100%;
+	/* Altura: pantalla completa menys altures de header i footer */
+	height: calc(100vh - var(--header-height) - var(--footer-height) - var(--header-gap));
 	position: relative;
 	overflow: hidden;
-	margin-top: 70px; /* Espai per al header fix */
-	margin-bottom: 60px; /* Espai per al footer fix */
+	z-index: 0; /* asegurar que el footer (z-index más alto) quede encima */
+	margin-top: var(--header-gap);
+	margin-bottom: 0;
 }
 
 .slides {
@@ -99,6 +108,40 @@ footer {
 	height: 100%;
 	position: relative;
 }
+
+/* Transicions de moviment entre slides */
+.slides {
+	overflow: hidden;
+}
+
+.slide {
+	position: absolute;
+	inset: 0;
+	box-sizing: border-box;
+	transform: translateX(100%);
+	opacity: 0;
+	transition: transform 500ms ease, opacity 500ms ease;
+	pointer-events: none;
+}
+
+.slide.active {
+	transform: translateX(0);
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.slide.to-left { /* outgoing to left */
+	transform: translateX(-100%);
+	opacity: 0;
+}
+
+.slide.to-right { /* outgoing to right */
+	transform: translateX(100%);
+	opacity: 0;
+}
+
+.slide.off-left { transform: translateX(-100%); opacity: 0; }
+.slide.off-right { transform: translateX(100%); opacity: 0; }
 
 .slide {
 	display: none;
@@ -108,13 +151,20 @@ footer {
 	flex-direction: column;
 }
 
+/* Garantir que les capes omplin l'altura del carrusel */
+.slides, .slide {
+    min-height: 100%;
+}
+
 .slide.active {
 	display: flex;
+	min-height: 0; /* permitir que el contenido interno (flex children) haga scroll correctamente */
 }
 
 .slide main {
 	overflow-y: auto;
 	flex: 1 1 auto;
+	min-height: 0; /* evitar overflow inesperado dentro de elementos flex */
 	padding: 5px;
 }
 
@@ -152,11 +202,19 @@ footer {
 /* ============================================ */
 
 .pagina-contingut {
-	max-width: 1000px;
-	margin: 0 auto;
+	/* ocupar tot l'ample del slide */
+	max-width: none;
+	width: 100%;
+	margin: 0;
 	padding: 15px 20px;
 	background-color: white;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	box-sizing: border-box;
+
+	/* Fer que el contenidor de la pàgina ompli l'altura del slide */
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .titol-superior {
@@ -176,6 +234,14 @@ footer {
 	margin-top: 0px;
 }
 
+/* Fer que el grid principal ocupi l'espai vertical disponible dins del .pagina-contingut */
+.contingut-principal {
+    flex: 1 1 auto;
+    min-height: 0; /* important per a que l'element fill pugui fer scroll intern */
+    height: 100%;
+    overflow: auto;
+}
+
 /* Quadres estil pàgina 1 i 2 */
 .quadre-blau, .quadre-verd, .quadre-roig {
 	padding: 15px;
@@ -188,7 +254,6 @@ footer {
 	width: 100%;
 	border-radius: 6px;
 	margin-top: 0px;
-	max-height: 180px;
 	object-fit: cover;
 }
 
@@ -337,6 +402,7 @@ footer {
 	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
+
 .text-tutorial {
 	font-size: 12px;
 	color: #555;
@@ -348,11 +414,17 @@ footer {
 /* ============================================ */
 
 .contingut-pagina3-wrapper {
-	max-width: 1000px;
-	margin: 0 auto;
+	/* ocupar tot l'ample i altura del slide */
+	max-width: none;
+	width: 100%;
+	margin: 0;
 	padding: 15px 20px;
 	background-color: white;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	box-sizing: border-box;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 /* Subtítol secció */
@@ -363,8 +435,13 @@ footer {
 	margin-top: 15px;
 }
 
+/* Separació addicional per a la pàgina d'exemple pràctic (pàgina 4) */
+.contingut-pagina4-wrapper .subtitol-seccio {
+    margin-bottom: 12px; /* separa el títol de la caixa següent */
+}
+
 .barra-vertical-gruixuda {
-	width: 8px;
+	width: 6px;
 	height: 35px;
 	background-color: #1F85DE;
 }
@@ -382,6 +459,19 @@ footer {
 	grid-template-columns: 2fr 1fr;
 	gap: 20px;
 	margin-top: 20px;
+	height: 100%;
+	overflow: auto;
+}
+
+/* Forçar que els wrappers de pàgina ocupin tot l'ample i l'altura del slide */
+.slide > .pagina-contingut,
+.slide > .contingut-pagina3-wrapper,
+.slide > .contingut-pagina4-wrapper {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Columna esquerra info */
@@ -426,7 +516,6 @@ footer {
 .imatge-monitor {
 	width: 100%;
 	border-radius: 6px;
-	max-height: 200px;
 	object-fit: cover;
 }
 
@@ -478,11 +567,17 @@ footer {
 /* ============================================ */
 
 .contingut-pagina4-wrapper {
-	max-width: 1000px;
-	margin: 0 auto;
+	/* ocupar tot l'ample i altura del slide */
+	max-width: none;
+	width: 100%;
+	margin: 0;
 	padding: 15px 20px;
 	background-color: white;
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+	box-sizing: border-box;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .caixa-intro-botiga {
@@ -504,8 +599,16 @@ footer {
 	grid-template-columns: 1fr 1fr;
 	gap: 20px;
 	margin-top: 5px;
-	max-height: calc(70vh - 130px);
+	height: 100%;
 	overflow-y: auto;
+}
+
+/* Ajustos para que altres grids ocupin l'altura disponible */
+.grid-pagina3 {
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+    overflow: auto;
 }
 
 .capcalera-columna {
