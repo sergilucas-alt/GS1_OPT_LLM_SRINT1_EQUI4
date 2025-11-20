@@ -72,7 +72,7 @@ function tancarSessio() {
 function tornarAInici() {
 	// Elimina la sessió del localStorage
 	localStorage.removeItem('intranetSessio');
-	window.location.href = '../pagina_inici/OPT.html';
+	window.location.href = '../index.html';
 }
 
 // ============================================

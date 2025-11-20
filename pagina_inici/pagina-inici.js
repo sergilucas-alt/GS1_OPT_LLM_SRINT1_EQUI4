@@ -7,7 +7,7 @@
  * Funció per navegar al botó del header
  */
 function tornarAInici() {
-	window.location.href = 'OPT.html';
+	window.location.href = 'index.html';
 }
 
 /**
@@ -21,14 +21,14 @@ function navegarASostenibilitat() {
  * Funció per navegar a la secció de digitalització
  */
 function navegarADigitalitzacio() {
-	window.location.href = '../Digitalització/digitalitzacio.html';
+	window.location.href = 'Digitalització/digitalitzacio.html';
 }
 
 /**
  * Funció per navegar a la intranet
  */
 function navegarAIntranet() {
-	window.location.href = '../Intranet/intranet.html';
+	window.location.href = 'Intranet/intranet.html';
 }
 
 // ============================================

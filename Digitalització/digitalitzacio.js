@@ -7,7 +7,7 @@
  * Funció per tornar a la pàgina d'inici
  */
 function tornarAInici() {
-	window.location.href = '../pagina_inici/OPT.html';
+	window.location.href = '../index.html';
 }
 
 // ============================================
